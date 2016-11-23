@@ -1,0 +1,1 @@
+# Magazzini-Digitali-Gestionale-2.0
