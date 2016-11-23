@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/baseLayout.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="header" value="/header.jsp"/>
+      <put-attribute name="body"   value="/body.jsp"/>
+      <put-attribute name="footer"   value="/footer.jsp"/>
+  </definition>
+  
+  <definition name="login" extends="baseLayout">
+      <put-attribute name="title"  value="Login Utente"/>
+      <put-attribute name="body"   value="/User/pages/login.jsp"/>      
+  </definition>
+  
+  <definition name="home" extends="baseLayout">
+      <put-attribute name="title"  value="Home Page"/>
+      <put-attribute name="body"   value="/Home/pages/home.jsp"/>      
+  </definition>
+  
+  <definition name="homeDetail" extends="baseLayout">
+      <put-attribute name="title"  value="Dettaglio Materiale Page"/>
+      <put-attribute name="body"   value="/Home/pages/homeDetail.jsp"/>      
+  </definition>
+  
+  <definition name="error" extends="baseLayout">
+      <put-attribute name="title"  value="Error Page"/>
+      <put-attribute name="body"   value="/Error/pages/error.jsp"/>      
+  </definition>
+  
+  <definition name="istituti" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Istituto"/>
+      <put-attribute name="body"   value="/Istituti/pages/istituti.jsp"/>      
+  </definition>
+  
+  <definition name="utenti" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Utenti"/>
+      <put-attribute name="body"   value="/Utenti/pages/utenti.jsp"/>      
+  </definition>
+  
+  <definition name="rigths" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Rigths"/>
+      <put-attribute name="body"   value="/Rigths/pages/rigths.jsp"/>      
+  </definition>
+  
+  <definition name="software" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Software"/>
+      <put-attribute name="body"   value="/Software/pages/software.jsp"/>      
+  </definition>
+  
+  <definition name="softwareConfig" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Configurazione del Software"/>
+      <put-attribute name="body"   value="/Software/pages/softwareConfig.jsp"/>      
+  </definition>
+  
+  <definition name="event" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Eventi"/>
+      <put-attribute name="body"   value="/Event/pages/event.jsp"/>      
+  </definition>
+  
+  <definition name="nodi" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Nodi"/>
+      <put-attribute name="body"   value="/Nodi/pages/nodi.jsp"/>      
+  </definition>
+  
+  <definition name="compositionLevel" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Livello Composizione"/>
+      <put-attribute name="body"   value="/CompositionLevel/pages/compositionLevel.jsp"/>      
+  </definition>
+</tiles-definitions>

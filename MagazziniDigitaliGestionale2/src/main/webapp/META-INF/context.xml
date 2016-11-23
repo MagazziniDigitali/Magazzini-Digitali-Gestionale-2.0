@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/MagazziniDigitaliGestionale" crossContext="true" debug="0" reloadable="true">
+    <Parameter name="nomeCatalogo" value="MDConfig|file:////Users/massi/Desktop/Lavoro/Sorgenti/Bncf/MagazziniDigitaliGestionale_2.0/MagazziniDigitaliGestionale2/configuration/new"/>
+</Context>

@@ -1,0 +1,43 @@
+table#sitMat {
+	width: 100%;
+	width: -moz-available;
+}
+
+table#sitMat th{
+	text-align: right;
+	width: 220px;
+}
+
+table#sitMat td{
+	padding-left: 5px;
+}
+
+div.filteringLeft{
+	float: left;
+	margin-right: 10px;
+}
+
+div#HomeTableContainer {
+	margin-top: 10px;:
+}
+
+td.tbGiallo{
+	background-color: yellow;
+	font-weight: bold;
+}
+
+td.tbArancione{
+	background-color: orange;
+	font-weight: bold;
+}
+
+td.tbVerde{
+	background-color: #F7FE2E;
+	font-weight: bold;
+}
+
+td.tbRosso{
+	background-color: red;
+	font-weight: bold;
+	color: white;
+}

@@ -1,0 +1,26 @@
+table#statoMat {
+	width: 100%;
+	width: -moz-available;
+}
+
+table#statoMat th{
+	text-align: right;
+}
+
+table#statoMat th.line{
+	background-color: black;
+}
+
+table#statoMat th.left{
+	text-align: left;
+	font-weight: normal;
+}
+
+table#statoMat td{
+	padding-left: 5px;
+}
+
+div.filteringLeft{
+	float: left;
+	margin-right: 10px;
+}

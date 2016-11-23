@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.custom.i18n.resources" value="global" />
+    <constant name="struts.i18n.reload" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.action.excludePattern" value="/TabHome,/TabHomeDetail,/TabIstituti,/TabUtenti,/TabRigths,/TabSoftware,/TabSoftwareConfig,/TabEvent,/TabNodi,/TabCompositionLevel"/>
+	<package name="user" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<action name="Login"
+			class="it.depositolegale.gestionale.user.action.LoginAction">
+			<result name="login" type="tiles">login</result>
+			<result name="home" type="tiles">home</result>
+			<result name="error" type="tiles">error</result>
+		</action>
+		<!--  action name="Home" class="it.depositolegale.gestionale.user.action.CheckLoginAction" method="check" -->
+		<action name="Home" class="it.depositolegale.gestionale.home.action.HomeAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="home" type="tiles">home</result>
+		</action>
+		<action name="HomeDetail" class="it.depositolegale.gestionale.home.action.HomeDetailAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="homeDetail" type="tiles">homeDetail</result>
+		</action>
+				<action name="Istituti" class="it.depositolegale.gestionale.istituti.action.IstitutiAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="istituti" type="tiles">istituti</result>
+		</action>
+		<action name="Utenti" class="it.depositolegale.gestionale.utenti.action.UtentiAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="utenti" type="tiles">utenti</result>
+		</action>
+		<action name="Rigths" class="it.depositolegale.gestionale.rigths.action.RigthsAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="rigths" type="tiles">rigths</result>
+		</action>
+		<action name="Software" class="it.depositolegale.gestionale.software.action.SoftwareAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="software" type="tiles">software</result>
+		</action>
+		<action name="SoftwareConfig" class="it.depositolegale.gestionale.software.action.SoftwareConfigAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="softwareConfig" type="tiles">softwareConfig</result>
+		</action>
+		<action name="Event" class="it.depositolegale.gestionale.event.action.EventAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="event" type="tiles">event</result>
+		</action>
+		<action name="Nodi" class="it.depositolegale.gestionale.nodi.action.NodiAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="nodi" type="tiles">nodi</result>
+		</action>
+		<action name="CompositionLevel" class="it.depositolegale.gestionale.compositionLevel.action.CompositionLevelAction">
+		    <result name="login" type="tiles">login</result>
+			<result name="compositionLevel" type="tiles">compositionLevel</result>
+		</action>
+	</package>
+</struts>
