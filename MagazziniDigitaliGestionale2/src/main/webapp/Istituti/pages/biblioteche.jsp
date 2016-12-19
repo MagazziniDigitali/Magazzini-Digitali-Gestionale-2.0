@@ -3,8 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#IstitutiTableContainer').jtable({
-			title : '<s:text name="istituti.table.title" />',
+		$('#BibliotecheTableContainer').jtable({
+			title : '<s:text name="biblioteche.table.title" />',
             paging: true, //Enable paging
 //            pageSize: 3, Set page size (default: 10)           
             columnResizable: true, //Actually, no need to set true since it's default
@@ -14,9 +14,9 @@
             class: "tabIstitute",
             defaultSorting: 'nome ASC',
             actions: {
-                listAction: 'TabIstituti?action=list&bibliotecaDepositaria=0',
-                createAction:'TabIstituti?action=create&bibliotecaDepositaria=0',
-                updateAction: 'TabIstituti?action=update&bibliotecaDepositaria=0'
+                listAction: 'TabIstituti?action=list&bibliotecaDepositaria=1',
+                createAction:'TabIstituti?action=create&bibliotecaDepositaria=1',
+                updateAction: 'TabIstituti?action=update&bibliotecaDepositaria=1'
 //                ,deleteAction: 'TabIstituti?action=delete'
             },
 			options: {
@@ -26,7 +26,7 @@
     
             fields : {
 				id : {
-					title : '<s:text name="istituti.table.id" />',
+					title : '<s:text name="biblioteche.table.id" />',
 					sort :true,
 					width : '30%',
 					key : true,
@@ -34,39 +34,39 @@
 					create : false
 				},
 				login : {
-					title : '<s:text name="istituti.table.login" />',
+					title : '<s:text name="biblioteche.table.login" />',
 					edit : true,
 					width : '20%',
 					inputClass: "tabTextEdit"
 				},
 				password : {
-					title : '<s:text name="istituti.table.password" />',
+					title : '<s:text name="biblioteche.table.password" />',
 					edit : true,
 					inputClass: "tabTextEdit",
 					visibility : 'hidden',
 					type: 'password'
 				},
 				ipAutorizzati : {
-					title : '<s:text name="istituti.table.ipAutorizzati" />',
+					title : '<s:text name="biblioteche.table.ipAutorizzati" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				nome : {
-					title : '<s:text name="istituti.table.nome" />',
+					title : '<s:text name="biblioteche.table.nome" />',
 					sort :false,
 					width : '30%',
 					edit : true,
 					inputClass: "tabTextEdit"
 				},
 				indirizzo : {
-					title : '<s:text name="istituti.table.indirizzo" />',
+					title : '<s:text name="biblioteche.table.indirizzo" />',
 					width : '30%',
 					edit : true,
 					inputClass: "tabTextEdit"
 				},
 				idRegioneID : {
-					title : '<s:text name="istituti.table.idRegione" />',
+					title : '<s:text name="biblioteche.table.idRegione" />',
 					edit : true,
 					width : '20%',
 					inputClass: "tabTextEdit",
@@ -76,62 +76,69 @@
 				    }
 				},
 				telefono : {
-					title : '<s:text name="istituti.table.telefono" />',
+					title : '<s:text name="biblioteche.table.telefono" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				nomeContatto : {
-					title : '<s:text name="istituti.table.nomeContatto" />',
+					title : '<s:text name="biblioteche.table.nomeContatto" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				bibliotecaDepositaria : {
-//					title : '<s:text name="istituti.table.bibliotecaDepositaria" />',
-					edit : false,
+//					title : '<s:text name="biblioteche.table.bibliotecaDepositaria" />',
+					edit : true,
 					visibility : 'hidden',
 					type : 'hidden',
-					defaultValue :  '0'
+					defaultValue :  '1'
+				},
+				istitutoCentrale : {
+					title : '<s:text name="biblioteche.table.istitutoCentrale" />',
+					edit : true,
+					type : 'checkbox',
+					values : { '0' : '<s:text name="biblioteche.table.istitutoCentrale.0" />', 
+						'1' : '<s:text name="biblioteche.table.istitutoCentrale.1" />' }
 				},
 				ipAccreditati : {
-					title : '<s:text name="istituti.table.ipAccreditati" />',
+					title : '<s:text name="biblioteche.table.ipAccreditati" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				interfacciaApiUtente : {
-					title : '<s:text name="istituti.table.interfacciaApiUtente" />',
+					title : '<s:text name="biblioteche.table.interfacciaApiUtente" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				libreriaApiUtente : {
-					title : '<s:text name="istituti.table.libreriaApiUtente" />',
+					title : '<s:text name="biblioteche.table.libreriaApiUtente" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				emailBagit : {
-					title : '<s:text name="istituti.table.emailBagit" />',
+					title : '<s:text name="biblioteche.table.emailBagit" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				pathTmp : {
-					title : '<s:text name="istituti.table.pathTmp" />',
+					title : '<s:text name="biblioteche.table.pathTmp" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				note : {
-					title : '<s:text name="istituti.table.note" />',
+					title : '<s:text name="biblioteche.table.note" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				url : {
-					title : '<s:text name="istituti.table.url" />',
+					title : '<s:text name="biblioteche.table.url" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
@@ -140,17 +147,17 @@
 		});
 
        $('#search').keyup(function(){
-          $('#IstitutiTableContainer').jtable('load', {searchname: $(this).val()});
+          $('#BibliotecheTableContainer').jtable('load', {searchname: $(this).val()});
        });
-		$('#IstitutiTableContainer').jtable('load');
+		$('#BibliotecheTableContainer').jtable('load');
 	});
 </script>
 
 <fieldset class="searchMateriale" style="">
-	<legend><s:text name="istituti.legend.title" /></legend>
+	<legend><s:text name="biblioteche.legend.title" /></legend>
 	<div class="filtering">
-      <s:text name="istituti.table.nome" />: <input type="text" id="search"/>
+      <s:text name="biblioteche.table.nome" />: <input type="text" id="search"/>
    </div>
    <br/>
-	<div id="IstitutiTableContainer"></div>
+	<div id="BibliotecheTableContainer"></div>
 </fieldset>

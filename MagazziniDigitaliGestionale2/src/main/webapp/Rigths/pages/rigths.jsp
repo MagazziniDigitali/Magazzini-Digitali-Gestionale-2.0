@@ -39,13 +39,15 @@
 					width : '20%',
 					inputClass: "tabTextEdit"
 				},
-				tipo : {
-					title : '<s:text name="rigths.table.tipo" />',
+				idModalitaAccessoID : {
+					title : '<s:text name="rigths.table.idModalitaAccesso" />',
 					edit : true,
-					visibility : 'hidden',
-					options : { 'A' : '<s:text name="rigths.table.tipo.A" />', 
-						'B' : '<s:text name="rigths.table.tipo.B" />', 
-						'C' : '<s:text name="rigths.table.tipo.C" />' }
+					width : '20%',
+					inputClass: "tabTextEdit",
+					optionsSorting: 'text',
+					options: function(data) {
+				            return 'TabModalitaAccesso?action=options';
+				    }
 				},
 			}
 		});

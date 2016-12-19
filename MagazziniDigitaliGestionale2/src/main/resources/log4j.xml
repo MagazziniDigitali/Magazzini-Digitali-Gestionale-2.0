@@ -2,9 +2,33 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
+<!-- 
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+    <param name="Target" value="System.out"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d{ISO8601}] %-5p %c %m %n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="DEBUG"/>
+      <param name="LevelMax" value="INFO"/>
+    </filter>
+  </appender>
+
+  <appender name="STDERR" class="org.apache.log4j.ConsoleAppender">
+    <param name="Target" value="System.err"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d{ISO8601}] %-5p %c %m %n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="WARN"/>
+      <param name="LevelMax" value="FATAL"/>
+    </filter> 
+  </appender>
+   -->
+
   <appender name="STDOUT" class="org.apache.log4j.DailyRollingFileAppender">
     <param name="DatePattern" value="'.'yyyy-MM-dd"/>
-    <param name="File" value="${catalina.base}/logsMD/MagazziniDigitaliGesgtionale/stdOut.log"/>
+    <param name="File" value="${catalina.base}/logsMD/MagazziniDigitaliGestionale/stdOut.log"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern" value="[%d{ISO8601}] %-5p %c %m %n"/>
     </layout>
@@ -16,7 +40,7 @@
   
   <appender name="STDERR" class="org.apache.log4j.DailyRollingFileAppender">
     <param name="DatePattern" value="'.'yyyy-MM-dd"/>
-    <param name="File" value="${catalina.base}/logsMD/MagazziniDigitaliGesgtionale/stdErr.log"/>
+    <param name="File" value="${catalina.base}/logsMD/MagazziniDigitaliGestionale/stdErr.log"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern" value="[%d{ISO8601}] %-5p %c %m %n"/>
     </layout>
@@ -25,7 +49,7 @@
       <param name="LevelMax" value="FATAL"/>
     </filter>
   </appender>
-  
+
   <appender name="EMAIL" class="org.apache.log4j.net.SMTPAppender">
     <param name="BufferSize" value="1" /> 
     <param name="SMTPProtocol" value="smtps" />

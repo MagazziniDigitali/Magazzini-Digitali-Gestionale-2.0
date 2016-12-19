@@ -48,6 +48,14 @@
     <servlet-name>TabCompositionLevel</servlet-name>
     <servlet-class>it.depositolegale.gestionale.compositionLevel.servlet.TabCompositionLevel</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>TabModalitaAccesso</servlet-name>
+    <servlet-class>it.depositolegale.gestionale.modalitaAccesso.servlet.TabModalitaAccesso</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TabRegioni</servlet-name>
+    <servlet-class>it.depositolegale.gestionale.regioni.servlet.TabRegioni</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>TabHome</servlet-name>
@@ -88,6 +96,14 @@
   <servlet-mapping>
     <servlet-name>TabCompositionLevel</servlet-name>
     <url-pattern>/TabCompositionLevel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TabModalitaAccesso</servlet-name>
+    <url-pattern>/TabModalitaAccesso</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TabRegioni</servlet-name>
+    <url-pattern>/TabRegioni</url-pattern>
   </servlet-mapping>
   
   <context-param>

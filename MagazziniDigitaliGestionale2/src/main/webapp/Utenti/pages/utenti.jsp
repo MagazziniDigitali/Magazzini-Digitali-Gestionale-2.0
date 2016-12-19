@@ -81,6 +81,12 @@
 					options: function(data) {
 				            return 'TabIstituti?action=options';
 				    }
+				},
+				note : {
+					title : '<s:text name="utenti.table.note" />',
+					edit : true,
+					visibility : 'hidden',
+					inputClass: "tabTextEdit"
 				}
 			}
 		});

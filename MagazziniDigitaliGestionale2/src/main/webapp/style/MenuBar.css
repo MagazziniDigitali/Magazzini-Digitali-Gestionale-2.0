@@ -1,50 +1,139 @@
-@CHARSET "UTF-8";
+/* Struttura menu */
 nav { 
 	background: #2ba0db; 
 	clear: left;
 }
 
-nav ul {
-  font-size: 0;
-  margin: 0;
+.nav
+{
+  list-style:none; 
+  margin:0;
   padding: 0;
+	z-index: 10;
 }
-
-nav ul li {
-  display: inline-block;
-  position: relative;
-  z-index: 10;
+ 
+.nav > li,
+.nav > li > a
+{
+  display:inline-block;
+  *display:inline; /* Per IE7 */
+  zoom:1; /* Per IE 7 */
 }
+ 
+.stacked > li
+{
+  display:list-item;
+}
+ 
+.stacked > li > a 
+{
+  display:block;
+}
+ 
+.flyout,
+.flyout-alt 
+{
+  position:relative;
+}
+ 
+.flyout-content 
+{
+  position:absolute;
+  top:100%;
+ 
+  /* Posizioniamo i sottomenu fuori dallo 
+     schermo; alternativa a display:none 
+   */
+  left:-99999px;
+ 
+  height:0;
+  overflow:hidden;
+}
+ 
+.flyout:hover > .flyout-content 
+{
+  left:0;
+}
+ 
+.flyout-alt:hover > .flyout-content 
+{
+  top:0;
+  left:100%;
+}
+ 
+.flyout:hover > .flyout-content,
+.flyout-alt:hover > .flyout-content
+{
+  height:auto;
+  overflow:visible;
+}
+ 
+/* Fine struttura menu */
 
-nav ul li a {
-  color: #fff;
-  display: block;
-  font-size: 14px;
-  padding: 15px 14px;
-  transition: 0.3s linear;
+/* Aspetto menu */
+ 
+.site-nav a 
+{
+  line-height:1;
+  padding:1em;
+  background-color:#2ba0db; /* Colore di sfondo iniziale */
+  color:#fff; /* Colore del testo dei link */
+  //font-weight: bold;
   text-decoration: none;
+  white-space:nowrap;
 }
-
-nav ul li:hover { background: #126d9b; }
-
-nav ul li ul {
-  border-bottom: 5px solid #2ba0db;
-  display: none;
-  position: absolute;
-  width: 250px;
+ 
+.site-nav .flyout:hover > a,
+.site-nav .flyout-alt:hover > a,
+.site-nav a:hover 
+{
+  background-color: #ba0202; /* Colore di sfondo sull'hover */
 }
-
-nav ul li ul li {
-  border-top: 1px solid #444;
-  display: block;
+ 
+.site-nav .flyout-alt > a:after 
+{
+  content:">>";
+} /* Inseriamo l'indicatore di presenza del sottomenu */
+ 
+.site-nav a,
+.site-nav .flyout-content 
+{
+  /* Colore e stile dei bordi; 
+     azzeriamo lo spessore con 0px 
+   */
+  border: 0px solid #000; 
 }
-
-nav ul li ul li:first-child { border-top: none; }
-
-nav ul li ul li a {
-  background: #373737;
-  display: block;
-  padding: 10px 14px;
+ 
+.site-nav > li > a
+{
+  /* Bordo sinistro sulle voci del menu principale */
+  border-left-width:1px;
+} 
+ 
+.site-nav > li:first-child > a 
+{
+  /* Eliminiamo il bordo dalla prima voce del menu */
+  border:none;
+} 
+ 
+.site-nav .flyout-content
+{
+  /* Bordo superiore per il sottomenu */
+  border-width:1px 0 0 0;
+} 
+ 
+.site-nav .flyout-content a 
+{
+  /* Bordo inferiore per le singole voci del sottomenu */
+  border-bottom-width:1px;
 }
-
-nav ul li ul li a:hover { background: #126d9b; }
+ 
+.site-nav .flyout-alt:hover > .flyout-content
+{
+  /* Un piccolo aggiustamento per la posizione del 
+     sottomenu sull'hover 
+   */
+  top:-1px;
+}
+ 
+/* Fine aspetto menu */

@@ -19,7 +19,11 @@ import com.google.gson.GsonBuilder;
 
 import it.bncf.magazziniDigitali.businessLogic.BusinessLogic;
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
+import it.bncf.magazziniDigitali.businessLogic.exception.BusinessLogicException;
+import it.bncf.magazziniDigitali.configuration.exception.MDConfigurationException;
+import it.magazziniDigitali.xsd.premis.exception.PremisXsdException;
 import mx.randalf.hibernate.exception.HibernateUtilException;
+import mx.randalf.xsd.exception.XsdException;
 
 /**
  * Classe di Base per la gestione delle Servlet delle chiamate della tabelle Ajax
@@ -83,10 +87,12 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 		B business = null;
 		List<T> list = null;
 		String result = "";
+		HashTable<String, Object> dati = null;
 		
 		try {
 			business = newInstanceBusiness();
-			list = (List<T>) business.find(null, 0, 0);
+			dati = searchList(request);
+			list = (List<T>) business.find(dati, 0, 0);
 			result = resultOptions(list);
 			response.getWriter().print("{\"Result\":\"OK\", \"Options\":[{\"Value\":\"\", \"DisplayText\":\"\"}, "+result+"]}");
 		} catch (HibernateException e) {
@@ -183,15 +189,62 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 		Gson gson = null;
 		String jsonArray = null;
 		
-		list = (List<T>) business.find(dati, startPageIndex, recordsPerPage);
-		
-		gson = new GsonBuilder().setPrettyPrinting().create();
-		// Convert Java Object to Json
-		jsonArray = gson.toJson(list);
+		try {
+			list = (List<T>) business.find(dati, startPageIndex, recordsPerPage);
+			
+			gson = new GsonBuilder().setPrettyPrinting().create();
+			jsonArray = convertJson(business, list);
+			if (jsonArray ==null){
+				// Convert Java Object to Json
+				jsonArray = gson.toJson(list);
+			}
+		} catch (SecurityException e) {
+			throw new HibernateException(e.getMessage(), e);
+		} catch (IllegalAccessException e) {
+			throw new HibernateException(e.getMessage(), e);
+		} catch (IllegalArgumentException e) {
+			throw new HibernateException(e.getMessage(), e);
+		} catch (InvocationTargetException e) {
+			throw new HibernateException(e.getMessage(), e);
+		} catch (BusinessLogicException e) {
+			throw new HibernateException(e.getMessage(), e);
+		}
 
 		return jsonArray;
 	}
 
+	protected String convertJson(B business, List<T> lists)
+			throws SecurityException, IllegalAccessException, IllegalArgumentException, 
+			InvocationTargetException, BusinessLogicException {
+		String jsonArray = null;
+		boolean primo = true;
+
+		try {
+			jsonArray = "[\n";
+			if (lists != null){
+				for (T list : lists){
+					
+					jsonArray +=(primo?"":",\n");
+					primo=false;
+					jsonArray += business.toJson((T)list);
+				}
+			}
+			jsonArray += "\n]\n";
+		} catch (SecurityException e) {
+			throw e;
+		} catch (IllegalAccessException e) {
+			throw e;
+		} catch (IllegalArgumentException e) {
+			throw e;
+		} catch (InvocationTargetException e) {
+			throw e;
+		} catch (BusinessLogicException e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+		return jsonArray;
+	}
 	
 	/**
 	 * Metodo utilizzato per la gestione delle attività di inserimento e modifica di una
@@ -211,11 +264,13 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 
 		try {
 			business = newInstanceBusiness();
+			checkPreUpdate(business, request);
 
 			dati = campiUpdate(request);
 
 			id = (String) business.save(dati);
 
+			postUpdate(id, dati);
 			gson = new GsonBuilder().setPrettyPrinting().create();
 
 			table = (T) business.findById(id);
@@ -247,8 +302,20 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 		} catch (IOException e) {
 			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
 			response.getWriter().print(error);
+		} catch (MDConfigurationException e) {
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			response.getWriter().print(error);
+		} catch (PremisXsdException e) {
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			response.getWriter().print(error);
+		} catch (XsdException e) {
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			response.getWriter().print(error);
 		}
 
+	}
+
+	protected void checkPreUpdate(B business, HttpServletRequest request)  throws HibernateException, HibernateUtilException {
 	}
 
 	private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -275,5 +342,11 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 	protected abstract HashTable<String, Object> campiUpdate(HttpServletRequest request) throws HibernateException, HibernateUtilException;
 
 	protected abstract String resultOptions(List<T> list);
+
+	protected void postUpdate(String id, HashTable<String, Object> dati)
+			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

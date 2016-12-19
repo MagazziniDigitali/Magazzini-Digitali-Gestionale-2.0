@@ -34,8 +34,13 @@
   </definition>
   
   <definition name="istituti" extends="baseLayout">
-      <put-attribute name="title"  value="Gestione Istituto"/>
+      <put-attribute name="title"  value="Gestione Depositanti"/>
       <put-attribute name="body"   value="/Istituti/pages/istituti.jsp"/>      
+  </definition>
+  
+  <definition name="biblioteche" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Biblioteche"/>
+      <put-attribute name="body"   value="/Istituti/pages/biblioteche.jsp"/>      
   </definition>
   
   <definition name="utenti" extends="baseLayout">
@@ -71,5 +76,10 @@
   <definition name="compositionLevel" extends="baseLayout">
       <put-attribute name="title"  value="Gestione Livello Composizione"/>
       <put-attribute name="body"   value="/CompositionLevel/pages/compositionLevel.jsp"/>      
+  </definition>
+  
+  <definition name="modalitaAccesso" extends="baseLayout">
+      <put-attribute name="title"  value="Modalit&amp;agrave; Accesso"/>
+      <put-attribute name="body"   value="/ModalitaAccesso/pages/modalitaAccesso.jsp"/>      
   </definition>
 </tiles-definitions>
