@@ -282,14 +282,16 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 //				agentXsd.addAgentIdentifier(AgentXsd.UUID_MD_AG_ID, agId);
 
 				agentXsd.addAgentIdentifier(PremisXsd.UUID_MD_AG, id);
-				if (dati.get("url") != null){
+				if (dati.get("url") != null &&
+						!((String)dati.get("url")).trim().equals("")){
 					agentXsd.addAgentIdentifier(AgentXsd.URI, (String) dati.get("url"));
 				}
 				
 				agentXsd.addAgentName((String) dati.get("nome"));
 				agentXsd.setAgentType(PremisXsd.DEPOSITANTE);
 				
-				if (dati.get("note") != null){
+				if (dati.get("note") != null &&
+						!((String)dati.get("note")).trim().equals("")){
 					agentXsd.addAgentNote((String) dati.get("note"));
 				}
 

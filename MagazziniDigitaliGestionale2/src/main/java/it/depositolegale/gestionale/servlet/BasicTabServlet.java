@@ -261,6 +261,7 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 		Gson gson = null;
 		T table = null;
 		String id = null;
+		String jsonArray = null;
 
 		try {
 			business = newInstanceBusiness();
@@ -276,40 +277,54 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 			table = (T) business.findById(id);
 
 			// Convert Java Object to Json
-			String json = gson.toJson(table);
+			jsonArray = business.toJson(table);
+			if (jsonArray ==null){
+				// Convert Java Object to Json
+				jsonArray = gson.toJson(table);
+			}
 
 			// Return Json in the format required by jTable plugin
-			String jsonData = "{\"Result\":\"OK\",\"Record\":" + json + "}";
+			String jsonData = "{\"Result\":\"OK\",\"Record\":" + jsonArray + "}";
 			response.getWriter().print(jsonData);
 		} catch (IllegalAccessException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		} catch (InvocationTargetException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			e.printStackTrace();
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		} catch (NoSuchMethodException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		} catch (HibernateException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		} catch (NamingException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		} catch (HibernateUtilException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		} catch (IOException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		} catch (MDConfigurationException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		} catch (PremisXsdException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		} catch (XsdException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			response.getWriter().print(error);
+		} catch (SecurityException e) {
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			response.getWriter().print(error);
+		} catch (IllegalArgumentException e) {
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			response.getWriter().print(error);
+		} catch (BusinessLogicException e) {
+			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
 			response.getWriter().print(error);
 		}
 
