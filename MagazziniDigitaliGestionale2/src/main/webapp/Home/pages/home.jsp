@@ -68,7 +68,7 @@
 	  <tr>
 	    <th><s:text name="home.initTrasf" /></th><td class="<s:property value="initTrasfClass" />"><s:property value="initTrasf" /></td>
 	    <th><s:text name="home.fineTrasf" /></th><td class="<s:property value="fineTrasfClass" />"><s:property value="fineTrasf" /></td>
-	    <th><s:text name="home.initValid" /></th><td class="<s:property value="initVlalidClass" />"><s:property value="initValid" /></td>
+	    <th><s:text name="home.initValid" /></th><td class="<s:property value="initValidClass" />"><s:property value="initValid" /></td>
 	    <th><s:text name="home.fineValid" /></th><td class="<s:property value="fineValidClass" />"><s:property value="fineValid" /></td>
 	    <th><s:text name="home.initPublish" /></th><td class="<s:property value="initPublishClass" />"><s:property value="initPublish" /></td>
 	  </tr>

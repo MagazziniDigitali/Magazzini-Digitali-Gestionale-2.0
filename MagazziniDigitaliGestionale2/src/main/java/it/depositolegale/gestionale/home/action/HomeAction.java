@@ -325,7 +325,7 @@ public class HomeAction extends LoginAction {
 			mdStatoDAO = new MDStatoDAO();
 			
 			orders = new Vector<Order>();
-			orders.add(Order.asc("descrizione"));
+			orders.add(Order.asc("sequenza"));
 			mdStatos = mdStatoDAO.findAll(orders);
 		} catch (HibernateException e) {
 			log.error(e.getMessage(), e);
