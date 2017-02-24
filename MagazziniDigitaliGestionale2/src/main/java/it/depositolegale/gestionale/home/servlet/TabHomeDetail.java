@@ -86,8 +86,8 @@ public class TabHomeDetail extends BasicTabServlet<MDFilesTmpErrorBusiness, MDFi
 				jsonArray += "  {\n";
 				jsonArray += "    \"id\": \""+mdFilesTmp.getId()+"\",\n";
 				jsonArray += "    \"dataIns\": \""+HomeDetailAction.convert(mdFilesTmp.getDataIns())+"\",\n";
-				jsonArray += "    \"type\": \""+(mdFilesTmp.getType().getDescrizione()==null?"":mdFilesTmp.getType().getDescrizione().replace("\"", "\\\""))+"\",\n";
-				jsonArray += "    \"msgError\": \""+(mdFilesTmp.getMsgError()==null?"":mdFilesTmp.getMsgError().replace("\"", "\\\""))+"\"\n";
+				jsonArray += "    \"type\": "+escape(mdFilesTmp.getType().getDescrizione())+",\n";
+				jsonArray += "    \"msgError\":"+escape(mdFilesTmp.getMsgError())+"\n";
 				jsonArray += "  }";
 			}
 		}

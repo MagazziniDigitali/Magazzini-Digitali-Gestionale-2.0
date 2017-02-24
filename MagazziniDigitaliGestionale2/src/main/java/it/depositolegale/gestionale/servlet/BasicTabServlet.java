@@ -97,19 +97,19 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 			response.getWriter().print("{\"Result\":\"OK\", \"Options\":[{\"Value\":\"\", \"DisplayText\":\"\"}, "+result+"]}");
 		} catch (HibernateException e) {
 			log.error(e.getMessage(), e);
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (HibernateUtilException e) {
 			log.error(e.getMessage(), e);
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 //		} catch (ConfigurationException e) {
 //			log.error(e.getMessage(), e);
-//			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+//			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 //			response.getWriter().print(error);
 		} catch (IOException e) {
 			log.error(e.getMessage(), e);
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		}
 
@@ -165,19 +165,19 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 			response.getWriter().print(jsonArray);
 		} catch (NumberFormatException e) {
 			log.error(e.getMessage(), e);
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (HibernateException e) {
 			log.error(e.getMessage(), e);
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (HibernateUtilException e) {
 			log.error(e.getMessage(), e);
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" +escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 //		} catch (ConfigurationException e) {
 //			log.error(e.getMessage(), e);
-//			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "}";
+//			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 //			response.getWriter().print(error);
 		}
 	}
@@ -287,44 +287,44 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 			String jsonData = "{\"Result\":\"OK\",\"Record\":" + jsonArray + "}";
 			response.getWriter().print(jsonData);
 		} catch (IllegalAccessException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (NoSuchMethodException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (HibernateException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (NamingException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (HibernateUtilException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (IOException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (MDConfigurationException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (PremisXsdException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (XsdException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (SecurityException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (IllegalArgumentException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		} catch (BusinessLogicException e) {
-			String error = "{\"Result\":\"ERROR\",\"Message\":\"" + e.getMessage() + "\"}";
+			String error = "{\"Result\":\"ERROR\",\"Message\":" + escape(e.getMessage()) + "}";
 			response.getWriter().print(error);
 		}
 
@@ -364,4 +364,60 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 		
 	}
 
+	protected String escape(String value){
+
+        char	c = 0;
+        int		i;
+        int		len;
+        StringBuilder sb = null;
+        String       t;
+
+        if (value == null || value.length() == 0) {
+            return "\"\"";
+        }
+
+        len = value.length();
+        sb = new StringBuilder(len + 4);
+        
+        sb.append('"');
+        for (i = 0; i < len; i += 1) {
+            c = value.charAt(i);
+            switch (c) {
+            case '\\':
+            case '"':
+                sb.append('\\');
+                sb.append(c);
+                break;
+            case '/':
+//                if (b == '<') {
+                    sb.append('\\');
+//                }
+                sb.append(c);
+                break;
+            case '\b':
+                sb.append("\\b");
+                break;
+            case '\t':
+                sb.append("\\t");
+                break;
+            case '\n':
+                sb.append("\\n");
+                break;
+            case '\f':
+                sb.append("\\f");
+                break;
+            case '\r':
+               sb.append("\\r");
+               break;
+            default:
+                if (c < ' ') {
+                    t = "000" + Integer.toHexString(c);
+                    sb.append("\\u" + t.substring(t.length() - 4));
+                } else {
+                    sb.append(c);
+                }
+            }
+        }
+        sb.append('"');
+        return sb.toString();	}
 }
