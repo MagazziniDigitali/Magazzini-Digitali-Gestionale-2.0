@@ -101,17 +101,26 @@
       <s:text name="home.table.nomeFile" />: <input type="text" id="nomeFile"/>
    </div>
 	<div class="filteringLeft">
-      <s:select key="home.table.stato"
-       id="stato"
-       name="stato"
+<!--
        list="stato"
        listKey="id"
        listValue="descrizione"
+       -->
+      <s:select key="home.table.stato"
+       id="stato"
+       name="stato"
+       list="#{}"
        multiple="false"
        required="true"
        headerKey=""
-       headerValue="Seleziona ....."
-/>
+       headerValue="Seleziona .....">
+       <s:iterator var="customers" value="stato">
+       <s:optgroup label="%{key}" list="%{value}" listKey="id" 
+listValue="descrizione"/>
+</s:iterator>
+       </s:select>
+       
+       
    </div>
 	<div class="filteringLeft">
 		<s:submit id="search" key="home.search"></s:submit>

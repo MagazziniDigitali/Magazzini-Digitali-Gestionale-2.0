@@ -316,10 +316,13 @@ public class HomeAction extends LoginAction {
 		return (getErrorIndex().intValue()==0?"":"tbRosso");
 	}
 	
-	public List<MDStato> getStato(){
+	public TreeMap<String, MDStato[]> getStato(){
 		MDStatoDAO mdStatoDAO = null;
 		List<MDStato> mdStatos = null;
+		MDStato mdStato = null;
 		List<Order> orders = null;
+		TreeMap<String, MDStato[]> output= null;
+		MDStato[] statos = null;
 		
 		try {
 			mdStatoDAO = new MDStatoDAO();
@@ -327,11 +330,45 @@ public class HomeAction extends LoginAction {
 			orders = new Vector<Order>();
 			orders.add(Order.asc("sequenza"));
 			mdStatos = mdStatoDAO.findAll(orders);
+			output = new TreeMap<String, MDStato[]>();
+			for(int x=0; x<mdStatos.size(); x++){
+				mdStato = mdStatos.get(x);
+				if (output.get(mdStato.getOptGroup())==null){
+					statos = new MDStato[1];
+				} else {
+					statos = new MDStato[output.get(mdStato.getOptGroup()).length+1];
+
+					for(int y=0; y<output.get(mdStato.getOptGroup()).length; y++){
+						statos[y] =output.get(mdStato.getOptGroup())[y];
+					}
+				}
+				statos[statos.length-1] = mdStato;
+				output.put(mdStato.getOptGroup(), statos);
+			}
 		} catch (HibernateException e) {
 			log.error(e.getMessage(), e);
 		} catch (HibernateUtilException e) {
 			log.error(e.getMessage(), e);
 		}
-		return mdStatos;
+		return output;
 	}
+
+//	public List<MDStato> getStato(){
+//		MDStatoDAO mdStatoDAO = null;
+//		List<MDStato> mdStatos = null;
+//		List<Order> orders = null;
+//		
+//		try {
+//			mdStatoDAO = new MDStatoDAO();
+//			
+//			orders = new Vector<Order>();
+//			orders.add(Order.asc("sequenza"));
+//			mdStatos = mdStatoDAO.findAll(orders);
+//		} catch (HibernateException e) {
+//			log.error(e.getMessage(), e);
+//		} catch (HibernateUtilException e) {
+//			log.error(e.getMessage(), e);
+//		}
+//		return mdStatos;
+//	}
 }
