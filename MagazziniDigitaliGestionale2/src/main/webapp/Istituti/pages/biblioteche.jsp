@@ -46,12 +46,6 @@
 					visibility : 'hidden',
 					type: 'password'
 				},
-				ipAutorizzati : {
-					title : '<s:text name="biblioteche.table.ipAutorizzati" />',
-					edit : true,
-					visibility : 'hidden',
-					inputClass: "tabTextEdit"
-				},
 				nome : {
 					title : '<s:text name="biblioteche.table.nome" />',
 					sort :false,
@@ -88,7 +82,6 @@
 					inputClass: "tabTextEdit"
 				},
 				bibliotecaDepositaria : {
-//					title : '<s:text name="biblioteche.table.bibliotecaDepositaria" />',
 					edit : true,
 					visibility : 'hidden',
 					type : 'hidden',
@@ -115,18 +108,6 @@
 				},
 				libreriaApiUtente : {
 					title : '<s:text name="biblioteche.table.libreriaApiUtente" />',
-					edit : true,
-					visibility : 'hidden',
-					inputClass: "tabTextEdit"
-				},
-				emailBagit : {
-					title : '<s:text name="biblioteche.table.emailBagit" />',
-					edit : true,
-					visibility : 'hidden',
-					inputClass: "tabTextEdit"
-				},
-				pathTmp : {
-					title : '<s:text name="biblioteche.table.pathTmp" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"

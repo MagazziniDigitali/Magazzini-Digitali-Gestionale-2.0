@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
+import it.bncf.magazziniDigitali.businessLogic.exception.BusinessLogicException;
 import it.bncf.magazziniDigitali.businessLogic.istituzione.MDIstituzioneBusiness;
 import it.bncf.magazziniDigitali.businessLogic.oggettoDigitale.implement.OggettoDigitale;
 import it.bncf.magazziniDigitali.configuration.exception.MDConfigurationException;
@@ -75,16 +76,30 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 	protected HashTable<String, Object> campiUpdate(HttpServletRequest request) throws HibernateException, HibernateUtilException {
 		HashTable<String, Object> dati = null;
 		RegioniDAO regioniDAO = null;
+		boolean newRecord= false;
 
 		try {
 			dati = new HashTable<String, Object>();
 
 			if (request.getParameter("id") != null) {
 				dati.put("id", request.getParameter("id"));
+			} else {
+				newRecord= true;
 			}
 
-			if (request.getParameter("login") != null) {
-				dati.put("login", request.getParameter("login"));
+			if (request.getParameter("bibliotecaDepositaria") != null &&
+					request.getParameter("bibliotecaDepositaria").equals("0")) {
+				if (newRecord){
+	//			if (request.getParameter("login") != null) {
+					dati.put("login", request.getParameter("pIva"));
+					dati.put("pathTmp", LoginAction.mdConfiguration.getSoftwareConfigString("path.tmp")+
+							File.separator+
+							request.getParameter("pIva"));
+				}
+			} else {
+				if (request.getParameter("login") != null) {
+					dati.put("login", request.getParameter("login"));
+				}
 			}
 
 			if (request.getParameter("password") != null) {
@@ -134,14 +149,14 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 			if (request.getParameter("libreriaApiUtente") != null) {
 				dati.put("libreriaApiUtente", request.getParameter("libreriaApiUtente"));
 			}
-
-			if (request.getParameter("emailBagit") != null) {
-				dati.put("emailBagit", request.getParameter("emailBagit"));
-			}
-
-			if (request.getParameter("pathTmp") != null) {
-				dati.put("pathTmp", request.getParameter("pathTmp"));
-			}
+//
+//			if (request.getParameter("emailBagit") != null) {
+//				dati.put("emailBagit", request.getParameter("emailBagit"));
+//			}
+//
+//			if (request.getParameter("pathTmp") != null) {
+//				dati.put("pathTmp", request.getParameter("pathTmp"));
+//			}
 
 			if (request.getParameter("note") != null) {
 				dati.put("note", request.getParameter("note"));
@@ -156,12 +171,26 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 				regioniDAO = new RegioniDAO();
 				dati.put("idRegione", regioniDAO.findById(Integer.parseInt(request.getParameter("idRegioneID"))));
 			}
+
+			if (request.getParameter("pIva") != null) {
+				dati.put("pIva", request.getParameter("pIva"));
+			}
+
+			if (request.getParameter("altaRisoluzione") != null) {
+				dati.put("altaRisoluzione", request.getParameter("altaRisoluzione"));
+			}
+
+			if (request.getParameter("bagit") != null) {
+				dati.put("bagit", request.getParameter("bagit"));
+			}
 		} catch (NumberFormatException e) {
 			throw new HibernateUtilException(e.getMessage(),e);
 		} catch (HibernateException e) {
 			throw e;
 		} catch (HibernateUtilException e) {
 			throw e;
+		} catch (MDConfigurationException e) {
+			throw new HibernateUtilException(e.getMessage(),e);
 		}
 
 		return dati;
@@ -188,7 +217,7 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 	@Override
 	protected void checkPreUpdate(MDIstituzioneBusiness business, 
 			HttpServletRequest request) throws HibernateException, 
-				HibernateUtilException {
+				HibernateUtilException, BusinessLogicException {
 		MDIstituzione mdIstituzione = null;
 		super.checkPreUpdate(business, request);
 		String value = null;
@@ -241,6 +270,10 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 					createPremis=true;
 				}
 			} else {
+				if (request.getParameter("pIva") ==null ||
+						request.getParameter("pIva").trim().equals("") ){
+					throw new BusinessLogicException("Il campo Partita Iva/Codice Fiscale è obbligatorio"); 
+				}
 				createPremis=true;
 			}
 		} catch (HibernateException e) {

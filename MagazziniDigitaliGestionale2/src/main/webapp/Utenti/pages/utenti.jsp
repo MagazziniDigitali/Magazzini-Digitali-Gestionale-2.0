@@ -47,6 +47,18 @@
 					visibility : 'hidden',
 					type: 'password'
 				},
+				codiceFiscale : {
+					title : '<s:text name="utenti.table.codiceFiscale" />',
+					width : '20%',
+					edit : true,
+					inputClass: "tabTextEdit"
+				},
+				mail : {
+					title : '<s:text name="utenti.table.email" />',
+					width : '20%',
+					edit : true,
+					inputClass: "tabTextEdit"
+				},
 				cognome : {
 					title : '<s:text name="utenti.table.cognome" />',
 					width : '20%',

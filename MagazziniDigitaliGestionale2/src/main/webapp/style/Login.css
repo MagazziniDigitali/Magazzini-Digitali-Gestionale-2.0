@@ -1,4 +1,40 @@
 fieldset.login{
-	width: 100px;
+	width: 400px;
 	margin: auto;
+}
+
+fieldset.login div li{
+	list-style-type: none;
+}
+
+fieldset.login div.errors{
+	color: red;
+	font-weight: bold;
+}
+
+fieldset.login div.welcome{
+	font-weight: bold;
+	font-size: large;
+}
+
+fieldset.login table.wwFormTable{
+	width: 100%;
+}
+
+fieldset.login table.wwFormTable input#Home_username{
+	width: 320px;
+}
+
+fieldset.login table.wwFormTable input#Home_password{
+	width: 320px;
+}
+
+fieldset.login table.menu{
+	width: 100%;
+}
+
+
+fieldset.login table.menu td.passwd{
+	width: 50%;
+	text-align: right;
 }

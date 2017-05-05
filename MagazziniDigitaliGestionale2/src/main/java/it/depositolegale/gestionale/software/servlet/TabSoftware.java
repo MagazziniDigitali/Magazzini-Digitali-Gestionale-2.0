@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
+import it.bncf.magazziniDigitali.businessLogic.exception.BusinessLogicException;
 import it.bncf.magazziniDigitali.businessLogic.oggettoDigitale.implement.OggettoDigitale;
 import it.bncf.magazziniDigitali.businessLogic.software.MDSoftwareBusiness;
 import it.bncf.magazziniDigitali.configuration.exception.MDConfigurationException;
@@ -130,12 +131,13 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 
 	/**
 	 * @throws HibernateUtilException 
+	 * @throws BusinessLogicException 
 	 * @see it.depositolegale.gestionale.servlet.BasicTabServlet#checkPreUpdate(it.bncf.magazziniDigitali.businessLogic.BusinessLogic, javax.servlet.http.HttpServletRequest)
 	 */
 	@Override
 	protected void checkPreUpdate(MDSoftwareBusiness business, 
 			HttpServletRequest request) throws HibernateException, 
-				HibernateUtilException {
+				HibernateUtilException, BusinessLogicException {
 		MDSoftware mdSoftware = null;
 		super.checkPreUpdate(business, request);
 		String value = null;

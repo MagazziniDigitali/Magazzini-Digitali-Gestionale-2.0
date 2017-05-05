@@ -51,6 +51,19 @@
 							</li>
 						</ul></li>
 				</s:if>
+					<li class="flyout"><a href="#" onclick="return false;">Tools</a>
+						<ul class="flyout-content nav stacked">
+				<s:if test="!showMenuAdmin()">
+						<s:if test="showMenuAltaRisoluzione()">
+							<li><a href="AltaRisoluzione.action">Alta Risoluzione</a></li>
+						</s:if>
+						<s:if test="showMenuBagit()">
+							<li><a href="http://md-front02.test.bncf.lan:5000/" target="_blank">Book Deposit</a></li>
+				</s:if>
+						</s:if>
+							<li><a href="ChangePassword.action">Cambio Password</a></li>
+						</ul>
+					</li>
 				<!-- 
     <ul>
       <li><a href="Home.action">Monitor</a></li>

@@ -330,7 +330,8 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 
 	}
 
-	protected void checkPreUpdate(B business, HttpServletRequest request)  throws HibernateException, HibernateUtilException {
+	protected void checkPreUpdate(B business, HttpServletRequest request)  
+			throws HibernateException, HibernateUtilException, BusinessLogicException {
 	}
 
 	private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {

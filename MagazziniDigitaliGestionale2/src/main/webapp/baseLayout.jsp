@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="style/Home.css"/>
     <link rel="stylesheet" href="style/HomeDetail.css"/>
     <link rel="stylesheet" href="style/Login.css"/>
+    <link rel="stylesheet" href="style/ResetPassword.css"/>
+    <link rel="stylesheet" href="style/ChangePassword.css"/>
     <link rel="stylesheet" href="style/Istituti.css"/>
 
     <script src="script/jquery-1.11.3.js"></script>

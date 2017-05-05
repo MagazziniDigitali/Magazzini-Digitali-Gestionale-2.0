@@ -18,6 +18,21 @@
       <put-attribute name="body"   value="/User/pages/login.jsp"/>      
   </definition>
   
+  <definition name="resetPassword" extends="baseLayout">
+      <put-attribute name="title"  value="Reset Password"/>
+      <put-attribute name="body"   value="/ResetPassword/pages/resetPassword.jsp"/>      
+  </definition>
+  
+  <definition name="altaRisoluzione" extends="baseLayout">
+      <put-attribute name="title"  value="Alta Risoluzione"/>
+      <put-attribute name="body"   value="/AltaRisoluzione/pages/altaRisoluzione.jsp"/>      
+  </definition>
+  
+  <definition name="changePassword" extends="baseLayout">
+      <put-attribute name="title"  value="Cambio Password"/>
+      <put-attribute name="body"   value="/ChangePassword/pages/changePassword.jsp"/>      
+  </definition>
+  
   <definition name="home" extends="baseLayout">
       <put-attribute name="title"  value="Home Page"/>
       <put-attribute name="body"   value="/Home/pages/home.jsp"/>      

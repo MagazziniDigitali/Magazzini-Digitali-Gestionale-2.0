@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
+import it.bncf.magazziniDigitali.businessLogic.exception.BusinessLogicException;
 import it.bncf.magazziniDigitali.businessLogic.oggettoDigitale.implement.OggettoDigitale;
 import it.bncf.magazziniDigitali.businessLogic.utenti.MDUtentiBusiness;
 import it.bncf.magazziniDigitali.configuration.exception.MDConfigurationException;
@@ -114,6 +115,14 @@ public class TabUtenti extends BasicTabServlet<MDUtentiBusiness, MDUtenti> {
 			dati.put("note", request.getParameter("note"));
 		}
 
+		if (request.getParameter("codiceFiscale") != null) {
+			dati.put("codiceFiscale", request.getParameter("codiceFiscale"));
+		}
+
+		if (request.getParameter("email") != null) {
+			dati.put("email", request.getParameter("email"));
+		}
+
 		return dati;
 	}
 
@@ -124,12 +133,13 @@ public class TabUtenti extends BasicTabServlet<MDUtentiBusiness, MDUtenti> {
 
 	/**
 	 * @throws HibernateUtilException 
+	 * @throws BusinessLogicException 
 	 * @see it.depositolegale.gestionale.servlet.BasicTabServlet#checkPreUpdate(it.bncf.magazziniDigitali.businessLogic.BusinessLogic, javax.servlet.http.HttpServletRequest)
 	 */
 	@Override
 	protected void checkPreUpdate(MDUtentiBusiness business, 
 			HttpServletRequest request) throws HibernateException, 
-				HibernateUtilException {
+				HibernateUtilException, BusinessLogicException {
 		MDUtenti mdUtenti = null;
 		super.checkPreUpdate(business, request);
 		String value = null;

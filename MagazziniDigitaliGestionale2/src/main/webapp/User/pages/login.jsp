@@ -21,4 +21,17 @@
 		<s:password name="password" key="global.password" />
 		<s:submit name="submit" key="global.submit"/>
 	</s:form>
+	<table class="menu">
+	  <tr>
+	    <td class="new">
+	      <a href="https://goo.gl/forms/G1NHTkLP9AH3pEut1" target="_blank">Se non sei ancora iscritto</a>
+	     </td>
+	     <td class="passwd">
+	       <a href="ResetPassword">
+	         Hai dimenticato la password?
+	       </a>
+	     </td>
+	  </tr>
+	</table>
+	
 </fieldset>

@@ -6,13 +6,17 @@ package it.depositolegale.gestionale.user.action;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import it.bncf.magazziniDigitali.configuration.exception.MDConfigurationException;
+import it.bncf.magazziniDigitali.database.dao.MDIstituzioneDAO;
+import it.bncf.magazziniDigitali.database.entity.MDIstituzione;
 import it.depositolegale.configuration.MDConfiguration;
 import it.depositolegale.www.utenti.Utenti;
+import mx.randalf.hibernate.exception.HibernateUtilException;
 
 
 /**
@@ -66,6 +70,12 @@ public class LoginAction extends ActionSupport {
 
 	protected String amministratore = null;
 
+	protected Integer altaRisoluzione = null;
+
+	protected Integer bagit = null;
+	
+	protected String pIva = null;
+
 	public static MDConfiguration mdConfiguration = null;
 
 	/**
@@ -116,19 +126,57 @@ public class LoginAction extends ActionSupport {
 		idUtente = (String) session.get("idUtente");
 		utente = (String) session.get("utente");
 		amministratore = (String) session.get("amministratore");
+		altaRisoluzione = (Integer) session.get("altaRisoluzione");
+		bagit = (Integer) session.get("bagit");
+		pIva = (String) session.get("pIva");
 	}
 
 	protected void initSession(Utenti utenti){
 		Map<String, Object> session = null;
+		MDIstituzioneDAO mdIstituzioneDAO = null;
+		MDIstituzione mdIstituzione = null;
+		String idIstituzione = null;
+
 		session = ActionContext.getContext().getSession();
 		session.put("logined", "true");
 		session.put("username", username);
 		if (utenti.getDatiUtente().getIstituzione() != null){
-			session.put("idIstituto", utenti.getDatiUtente().getIstituzione().getId());
+			idIstituzione = utenti.getDatiUtente().getIstituzione().getId();
+			try {
+				mdIstituzioneDAO = new MDIstituzioneDAO();
+				mdIstituzione = mdIstituzioneDAO.findById(idIstituzione);
+			} catch (HibernateException e) {
+			} catch (HibernateUtilException e) {
+			}
+			if (mdIstituzione != null){
+				if (mdIstituzione.getAltaRisoluzione()!= null){
+					session.put("altaRisoluzione", mdIstituzione.getAltaRisoluzione());
+				} else {
+					session.put("altaRisoluzione", 0);
+				}
+				if (mdIstituzione.getBagit()!= null){
+					session.put("bagit", mdIstituzione.getBagit());
+				} else {
+					session.put("bagit", 0);
+				}
+				if (mdIstituzione.getpIva()!= null){
+					session.put("pIva", mdIstituzione.getpIva());
+				} else {
+					session.put("pIva", "");
+				}
+			} else {
+				session.put("altaRisoluzione", 0);
+				session.put("bagit", 0);
+				session.put("pIva", "");
+			}
+			session.put("idIstituto", idIstituzione);
 			session.put("istituto", utenti.getDatiUtente().getIstituzione().getNome());
 		} else {
 			session.put("idIstituto", null);
 			session.put("istituto", null);
+			session.put("altaRisoluzione", 0);
+			session.put("bagit", 0);
+			session.put("pIva", "");
 		}
 		session.put("idUtente", utenti.getDatiUtente().getId());
 		session.put("utente", utenti.getDatiUtente().getCognome()+
@@ -171,6 +219,22 @@ public class LoginAction extends ActionSupport {
 				idIstituto==null){
 //		if (session.get("loginedAdmin") != null &&
 //				session.get("loginedAdmin").equals("true")){
+			result = true;
+		}
+		return result;
+	}
+
+	public Boolean showMenuAltaRisoluzione(){
+		Boolean result = false;
+		if (altaRisoluzione == 1){
+			result = true;
+		}
+		return result;
+	}
+
+	public Boolean showMenuBagit(){
+		Boolean result = false;
+		if (bagit == 1){
 			result = true;
 		}
 		return result;

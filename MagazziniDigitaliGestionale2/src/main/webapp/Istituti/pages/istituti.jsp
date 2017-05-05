@@ -35,7 +35,7 @@
 				},
 				login : {
 					title : '<s:text name="istituti.table.login" />',
-					edit : true,
+					edit : false,
 					width : '20%',
 					inputClass: "tabTextEdit"
 				},
@@ -45,6 +45,12 @@
 					inputClass: "tabTextEdit",
 					visibility : 'hidden',
 					type: 'password'
+				},
+				pIva : {
+					title : '<s:text name="istituti.table.pIva" />',
+					edit : true,
+					visibility : 'hidden',
+					inputClass: "tabTextEdit"
 				},
 				ipAutorizzati : {
 					title : '<s:text name="istituti.table.ipAutorizzati" />',
@@ -63,12 +69,14 @@
 					title : '<s:text name="istituti.table.indirizzo" />',
 					width : '30%',
 					edit : true,
+					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
 				idRegioneID : {
 					title : '<s:text name="istituti.table.idRegione" />',
 					edit : true,
 					width : '20%',
+					visibility : 'hidden',
 					inputClass: "tabTextEdit",
 					optionsSorting: 'text',
 					options: function(data) {
@@ -88,42 +96,41 @@
 					inputClass: "tabTextEdit"
 				},
 				bibliotecaDepositaria : {
-//					title : '<s:text name="istituti.table.bibliotecaDepositaria" />',
 					edit : false,
 					visibility : 'hidden',
 					type : 'hidden',
 					defaultValue :  '0'
 				},
-				ipAccreditati : {
-					title : '<s:text name="istituti.table.ipAccreditati" />',
-					edit : true,
-					visibility : 'hidden',
-					inputClass: "tabTextEdit"
-				},
-				interfacciaApiUtente : {
-					title : '<s:text name="istituti.table.interfacciaApiUtente" />',
-					edit : true,
-					visibility : 'hidden',
-					inputClass: "tabTextEdit"
-				},
-				libreriaApiUtente : {
-					title : '<s:text name="istituti.table.libreriaApiUtente" />',
-					edit : true,
-					visibility : 'hidden',
-					inputClass: "tabTextEdit"
-				},
-				emailBagit : {
-					title : '<s:text name="istituti.table.emailBagit" />',
-					edit : true,
-					visibility : 'hidden',
-					inputClass: "tabTextEdit"
-				},
-				pathTmp : {
-					title : '<s:text name="istituti.table.pathTmp" />',
-					edit : true,
-					visibility : 'hidden',
-					inputClass: "tabTextEdit"
-				},
+//				ipAccreditati : {
+//					title : '<s:text name="istituti.table.ipAccreditati" />',
+//					edit : true,
+//					visibility : 'hidden',
+//					inputClass: "tabTextEdit"
+//				},
+//				interfacciaApiUtente : {
+//					title : '<s:text name="istituti.table.interfacciaApiUtente" />',
+//					edit : true,
+//					visibility : 'hidden',
+//					inputClass: "tabTextEdit"
+//				},
+//				libreriaApiUtente : {
+//					title : '<s:text name="istituti.table.libreriaApiUtente" />',
+//					edit : true,
+//					visibility : 'hidden',
+//					inputClass: "tabTextEdit"
+//				},
+//				emailBagit : {
+//					title : '<s:text name="istituti.table.emailBagit" />',
+//					edit : true,
+//					visibility : 'hidden',
+//					inputClass: "tabTextEdit"
+//				},
+//				pathTmp : {
+//					title : '<s:text name="istituti.table.pathTmp" />',
+//					edit : true,
+//					visibility : 'hidden',
+//					inputClass: "tabTextEdit"
+//				},
 				note : {
 					title : '<s:text name="istituti.table.note" />',
 					edit : true,
@@ -135,6 +142,20 @@
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
+				},
+				altaRisoluzione : {
+					title : '<s:text name="istituti.table.altaRisoluzione" />',
+					edit : true,
+					type : 'checkbox',
+					values : { '0' : '<s:text name="istituti.table.altaRisoluzione.0" />', 
+						'1' : '<s:text name="istituti.table.altaRisoluzione.1" />' }
+				},
+				bagit : {
+					title : '<s:text name="istituti.table.bagit" />',
+					edit : true,
+					type : 'checkbox',
+					values : { '0' : '<s:text name="istituti.table.bagit.0" />', 
+						'1' : '<s:text name="istituti.table.bagit.1" />' }
 				},
 			}
 		});

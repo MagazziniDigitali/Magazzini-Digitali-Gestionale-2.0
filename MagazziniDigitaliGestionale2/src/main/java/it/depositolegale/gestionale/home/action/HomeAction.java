@@ -21,6 +21,8 @@ import it.bncf.magazziniDigitali.database.dao.MDIstituzioneDAO;
 import it.bncf.magazziniDigitali.database.dao.MDStatoDAO;
 import it.bncf.magazziniDigitali.database.entity.MDIstituzione;
 import it.bncf.magazziniDigitali.database.entity.MDStato;
+import it.depositolegale.gestionale.home.action.preIscrizione.ValidatePreIscrizione;
+import it.depositolegale.gestionale.home.action.preIscrizione.exception.ValidatePreIscrizioneException;
 import it.depositolegale.gestionale.user.action.LoginAction;
 import it.depositolegale.utenti.MDUtenti;
 import it.depositolegale.www.errorMsg.ErrorType_type;
@@ -66,7 +68,9 @@ public class HomeAction extends LoginAction {
 	public static String CHECKINDEX		= "CHECKINDEX";
 	public static String FINEINDEX		= "FINEINDEX";
 	public static String ERRORINDEX		= "ERRORINDEX";
-	
+
+	private String checkId = null;
+
 	/**
 	 * 
 	 */
@@ -81,14 +85,27 @@ public class HomeAction extends LoginAction {
 		HttpServletRequest request = null;
 		String ipClient  = null;
 		Utenti utenti = null;
+		ValidatePreIscrizione validatePreIscrizione = null;
 		
 		result = super.execute();
 		
 		if (!result.equals(HOME) && !result.equals(ERROR)){
-			if (username != null){
+			
+			if (checkId != null){
+				try {
+					validatePreIscrizione = new ValidatePreIscrizione(checkId,
+							mdConfiguration.getSoftwareConfigString("send.email.login"),
+							mdConfiguration.getSoftwareConfigString("send.email.password"));
+					validatePreIscrizione.inizializzaUtente();
+					addActionMessage("La sua utenza è stata creata a breve riceverà la password.");
+				} catch (ValidatePreIscrizioneException e){
+					addActionError(e.getMessage());
+				}
+				result = LOGIN;
+			} else if (username != null){
 				
 				request = ServletActionContext.getRequest();
-				
+
 				//is client behind something?
 				ipClient = request.getHeader("X-FORWARDED-FOR");
 				if (ipClient == null) {
@@ -351,6 +368,20 @@ public class HomeAction extends LoginAction {
 			log.error(e.getMessage(), e);
 		}
 		return output;
+	}
+
+	/**
+	 * @return the checkId
+	 */
+	public String getCheckId() {
+		return checkId;
+	}
+
+	/**
+	 * @param checkId the checkId to set
+	 */
+	public void setCheckId(String checkId) {
+		this.checkId = checkId;
 	}
 
 //	public List<MDStato> getStato(){

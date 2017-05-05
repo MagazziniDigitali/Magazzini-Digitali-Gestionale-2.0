@@ -32,6 +32,22 @@
 			<result name="login" type="tiles">login</result>
 			<result name="homeDetail" type="tiles">homeDetail</result>
 		</action>
+		<action name="ResetPassword"
+			class="it.depositolegale.gestionale.resetPassword.action.ResetPasswordAction">
+			<result name="resetPassword" type="tiles">resetPassword</result>
+			<result name="login" type="tiles">login</result>
+		</action>
+		<action name="AltaRisoluzione"
+			class="it.depositolegale.gestionale.altaRisoluzione.action.AltaRisoluzioneAction">
+			<result name="altaRisoluzione" type="tiles">altaRisoluzione</result>
+			<result name="login" type="tiles">login</result>
+		</action>
+		<action name="ChangePassword"
+			class="it.depositolegale.gestionale.changePassword.action.ChangePasswordAction">
+			<result name="changePassword" type="tiles">changePassword</result>
+			<result name="home" type="tiles">home</result>
+			<result name="login" type="tiles">login</result>
+		</action>
 		<action name="Istituti"
 			class="it.depositolegale.gestionale.istituti.action.IstitutiAction">
 			<result name="login" type="tiles">login</result>
