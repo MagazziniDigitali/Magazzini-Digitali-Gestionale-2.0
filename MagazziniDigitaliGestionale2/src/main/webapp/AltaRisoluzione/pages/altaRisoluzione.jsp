@@ -23,7 +23,7 @@
 		  AAAAAAA
 		  BBBBBBBBB
 		</pre>
-		Dal seguente <a href="/donwload/MD-ClientUpload.tgz">link</a> &egrave; possibile scaricare il programma.<br/>
+		Dal seguente <a href="/download/MD-ClientUpload.tgz">link</a> &egrave; possibile scaricare il programma.<br/>
 		Per poter funzionare è necessario installare:<br/>
 		<ul>
 		  <li>Java 8 o superiori</li>

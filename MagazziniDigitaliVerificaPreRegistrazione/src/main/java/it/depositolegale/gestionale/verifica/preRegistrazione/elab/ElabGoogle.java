@@ -105,7 +105,6 @@ public class ElabGoogle extends SendEmail{
 			elabGoogle = new ElabGoogle(row, null, "noreply@depositolegale.it", "ov6Uojiejai5", "http://md-gestionale.test.bncf.lan/MagazziniDigitaliGestionale/Home.action?checkId=");
 			elabGoogle.sendMsg("AAAAAAAAAAAA");
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -136,7 +135,7 @@ public class ElabGoogle extends SendEmail{
 
 			mdPreRegistrazioneDAO = new MDPreRegistrazioneDAO();
 			mdPreRegistrazione = mdPreRegistrazioneDAO.findByProgressivo(progressivo, dataPreIscrizione);
-			if (mdPreRegistrazione == null || !mdPreRegistrazione.getProgressivo().equals(progressivo)) {
+			if (mdPreRegistrazione == null) {
 				mdUtentiDAO = new MDUtentiDAO();
 
 				mdUtenti = mdUtentiDAO.findByCodiceFiscale((String) row.get(UTENTE_CODICEFISCALE));

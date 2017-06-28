@@ -77,12 +77,12 @@ public class ValidatePreIscrizione extends SendEmail{
 			mdPreRegistrazione = mdPreRegistrazioneDAO.findById(checkId);
 			if (mdPreRegistrazione != null) {
 				gcData.setTimeInMillis(mdPreRegistrazione.getDataPreIscrizione().getTime());
-				gcData.set(Calendar.DAY_OF_MONTH, 2);
+				gcData.add(Calendar.DAY_OF_MONTH, 2);
 				dati = new HashTable<String, Object>();
 				dati.put("id", checkId);
 				if (mdPreRegistrazione.getEmailValidata() == -1) {
 					throw new ValidatePreIscrizioneException(
-							"La richiesta di attivazione [" + checkId + "] risulta già scaduta");
+							"La richiesta di attivazione [" + checkId + "] risulta una email non valida");
 				} else if (gcData.getTimeInMillis() < gc.getTimeInMillis()) {
 					dati.put("emailValidata", -1);
 					mdPreRegistrazioneBusiness = new MDPreRegistrazioneBusiness();
