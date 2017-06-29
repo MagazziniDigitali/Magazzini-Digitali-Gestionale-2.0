@@ -37,17 +37,27 @@
 				},
 				nomeFile : {
 					title : '<s:text name="home.table.nomeFile" />',
-					width : '30%',
+					width : '20%',
+					edit : true
+				},
+				data : {
+					title : '<s:text name="home.table.data" />',
+					width : '10%',
+					edit : true
+				},
+				istituzione : {
+					title : '<s:text name="home.table.istituzione" />',
+					width : '15%',
 					edit : true
 				},
 				statoName : {
 					title : '<s:text name="home.table.stato" />',
-					width : '30%',
+					width : '20%',
 					edit : true
 				},
 				statoJob : {
 					title : '<s:text name="home.table.statoJob" />',
-					width : '30%',
+					width : '10%',
 					edit : true
 				}
 			}

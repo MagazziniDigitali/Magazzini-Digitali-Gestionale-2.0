@@ -2,7 +2,7 @@
   <wb-module deploy-name="MagazziniDigitaliGestionale2">
     <wb-resource deploy-path="/" source-path="src/main/webapp"/>
         <property name="java-output-path" value="/MagazziniDigitaliGestionale2/target/classes"/>
-        <property name="context-root" value="MagazziniDigitaliGestionale##2.0.11"/>
+        <property name="context-root" value="MagazziniDigitaliGestionale##2.0.13"/>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>

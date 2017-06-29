@@ -139,6 +139,8 @@ public class TabHome extends BasicTabServlet<MDFilesTmpBusiness, MDFileTmpTab> {
 				jsonArray += "  {\n";
 				jsonArray += "    \"id\": \""+mdFilesTmp.getId()+"\",\n";
 				jsonArray += "    \"nomeFile\": \""+mdFilesTmp.getNomeFile()+"\",\n";
+				jsonArray += "    \"data\": \""+mdFilesTmp.getTrasfDataStart()+"\",\n";
+				jsonArray += "    \"istituzione\": \""+mdFilesTmp.getIdIstituto().getNome()+"\",\n";
 				try {
 					if (mdFilesTmp.getStato() != null){
 						jsonArray += "    \"statoName\": \""+mdFilesTmp.getStato().getDescrizione()+"\",\n";
