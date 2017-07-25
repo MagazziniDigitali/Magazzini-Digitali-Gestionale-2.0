@@ -69,4 +69,9 @@ public class TabCompositionLevel extends BasicTabServlet<MDCompositionLevelBusin
 	protected String resultOptions(List<MDCompositionLevel> list) {
 		return null;
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		return string;
+	}
 }

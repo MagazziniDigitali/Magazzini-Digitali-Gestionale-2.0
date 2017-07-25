@@ -357,4 +357,12 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 			throw e;
 		}
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		if (string.equals("idRegioneID")){
+			string = "idRegione.nomeRegione";
+		}
+		return string;
+	}
 }

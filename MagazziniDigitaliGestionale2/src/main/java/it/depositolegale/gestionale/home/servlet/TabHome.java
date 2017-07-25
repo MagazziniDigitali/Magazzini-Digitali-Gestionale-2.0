@@ -162,4 +162,16 @@ public class TabHome extends BasicTabServlet<MDFilesTmpBusiness, MDFileTmpTab> {
 //		System.out.println(jsonArray);
 		return jsonArray;
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		if (string.equals("data")){
+			string = "trasfDataStart";
+		} else if (string.equals("istituzione")){
+			string = "idIstituto.nome";
+		} else if (string.equals("statoName")) {
+			string = "stato.descrizione";
+		}
+		return string;
+	}
 }

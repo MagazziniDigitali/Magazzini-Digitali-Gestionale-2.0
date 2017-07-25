@@ -67,4 +67,9 @@ public class TabEvent extends BasicTabServlet<MDEventBusiness, MDEvent> {
 	protected String resultOptions(List<MDEvent> list) {
 		return null;
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		return string;
+	}
 }

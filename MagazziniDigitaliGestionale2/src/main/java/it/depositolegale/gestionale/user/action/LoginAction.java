@@ -78,6 +78,8 @@ public class LoginAction extends ActionSupport {
 
 	public static MDConfiguration mdConfiguration = null;
 
+	private String logout = null;
+
 	/**
 	 * 
 	 */
@@ -105,6 +107,9 @@ public class LoginAction extends ActionSupport {
 				LoginAction.mdConfiguration.getSoftware()==null){
 			addActionError(getText("software.nonIdentificato"));
 			return ERROR;
+		} else if (logout != null){
+			deleteSession();
+			return LOGIN;
 		} else {
 			session = ActionContext.getContext().getSession();
 			if (session.get("logined") != null &&
@@ -129,6 +134,13 @@ public class LoginAction extends ActionSupport {
 		altaRisoluzione = (Integer) session.get("altaRisoluzione");
 		bagit = (Integer) session.get("bagit");
 		pIva = (String) session.get("pIva");
+	}
+
+	protected void deleteSession() {
+		Map<String, Object> session = null;
+		session = ActionContext.getContext().getSession();
+		session.remove("logined");
+		ActionContext.getContext().setSession(session);
 	}
 
 	protected void initSession(Utenti utenti){
@@ -300,5 +312,19 @@ public class LoginAction extends ActionSupport {
 	 */
 	public void setAmministratore(String amministratore) {
 		this.amministratore = amministratore;
+	}
+
+	/**
+	 * @return the logout
+	 */
+	public String getLogout() {
+		return logout;
+	}
+
+	/**
+	 * @param logout the logout to set
+	 */
+	public void setLogout(String logout) {
+		this.logout = logout;
 	}
 }

@@ -34,7 +34,7 @@ public class TabNodi extends BasicTabServlet<MDNodiBusiness, MDNodi> {
 		HashTable<String, Object> dati = null;
 		String searchname = null;
 
-		searchname = request.getParameter("searchname");
+		searchname = request.getParameter("search");
 
 		dati = new HashTable<String, Object>();
 		if (searchname != null &&
@@ -42,11 +42,11 @@ public class TabNodi extends BasicTabServlet<MDNodiBusiness, MDNodi> {
 			dati.put("nome", searchname.trim());
 		}
 
-		searchname = request.getParameter("searchcogname");
+		searchname = request.getParameter("searchDescrizione");
 
 		if (searchname != null &&
 				!searchname.trim().equals("")){
-			dati.put("cognome", searchname.trim());
+			dati.put("descrizione", searchname.trim());
 		}
 		return dati;
 	}
@@ -106,5 +106,10 @@ public class TabNodi extends BasicTabServlet<MDNodiBusiness, MDNodi> {
 			}
 		}
 		return result;
+	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		return string;
 	}
 }

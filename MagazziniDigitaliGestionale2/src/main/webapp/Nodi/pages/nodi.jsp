@@ -27,7 +27,6 @@
             fields : {
 				id : {
 					title : '<s:text name="nodi.table.id" />',
-					sort :true,
 					width : '10%',
 					key : true,
 					list : true,
@@ -35,14 +34,12 @@
 				},
 				nome : {
 					title : '<s:text name="nodi.table.nome" />',
-					sort :false,
 					width : '10%',
 					edit : true,
 					inputClass: "tabTextEdit"
 				},
 				descrizione : {
 					title : '<s:text name="nodi.table.descrizione" />',
-					sort :false,
 					width : '10%',
 					edit : true,
 					inputClass: "tabTextEdit"
@@ -85,7 +82,7 @@
        $('#search').keyup(function(){
           $('#NodiTableContainer').jtable('load', {searchname: $(this).val(), searchcogname: $('#searchCognome').val()});
        });
-       $('#searchCognome').keyup(function(){
+       $('#searchDescrizione').keyup(function(){
            $('#NodiTableContainer').jtable('load', {searchcogname: $(this).val(), searchname: $('#search').val()});
         });
 		$('#NodiTableContainer').jtable('load');
@@ -95,7 +92,7 @@
 <fieldset class="searchMateriale" style="">
 	<legend><s:text name="nodi.legend.title" /></legend>
 	<div class="filtering">
-      <s:text name="nodi.table.cognome" />: <input type="text" id="searchCognome"/>
+      <s:text name="nodi.table.descrizione" />: <input type="text" id="searchDescrizione"/>
    </div>
 	<div class="filtering">
       <s:text name="nodi.table.nome" />: <input type="text" id="search"/>

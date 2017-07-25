@@ -72,4 +72,9 @@ public class TabModalitaAccesso extends BasicTabServlet<MDModalitaAccessoBusines
 		}
 		return result;
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		return string;
+	}
 }

@@ -51,4 +51,9 @@ public class TabRegioni extends BasicTabServlet<RegioniBusiness, Regioni> {
 		}
 		return result;
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		return string;
+	}
 }

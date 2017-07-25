@@ -95,4 +95,9 @@ public class TabHomeDetail extends BasicTabServlet<MDFilesTmpErrorBusiness, MDFi
 //		System.out.println(jsonArray);
 		return jsonArray;
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		return string;
+	}
 }

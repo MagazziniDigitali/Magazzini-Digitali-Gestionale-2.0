@@ -131,6 +131,7 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 		String[] st = null;
 		HashTable<String, Object> dati = null;
 		String jsonArray = null;
+		String sortKey = null;
 		
 		try {
 			// Fetch Data from User Table
@@ -147,7 +148,8 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 
 			if (jtSorting != null && jtSorting.trim().length() > 0 && jtSorting.trim().indexOf(" ") > -1) {
 				st = jtSorting.trim().split(" ");
-				business.addOrder(st[0], st[1]);
+				sortKey = checkSortKey(st[0]);
+				business.addOrder(sortKey, st[1]);
 			}
 			
 			dati = searchList(request);
@@ -181,6 +183,8 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 //			response.getWriter().print(error);
 		}
 	}
+
+	protected abstract String checkSortKey(String string);
 
 	@SuppressWarnings("unchecked")
 	protected String find(B business, HashTable<String, Object> dati,

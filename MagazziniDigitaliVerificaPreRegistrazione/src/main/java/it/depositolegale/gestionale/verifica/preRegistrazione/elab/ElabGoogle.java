@@ -163,27 +163,22 @@ public class ElabGoogle extends SendEmail{
 
 	private void sendMsg(String id) throws MessagingException {
 		sendMsg((String)row.get(UTENTE_EMAIL), "Magazzini Digitali - Esito registrazione", 
-				"<center><img src=\"http://www.depositolegale.it/wp-content/uploads/2010/10/logo.png\"/></center><br/>"
-				+ "<br/>Buongiorno, Sig. "+row.get(UTENTE_NOME)+" "+row.get(UTENTE_COGNOME)+"<br/>"
-				+ "</br/>La sua richiesta di registrazione fatta in data "+row.get(DATA_PRESCRIZIONE)+" &egrave; stata validata per poter terminare la registrazione &egrave; necessario confermare "
-				+ "il suo indirizzo di posta elettronica attaverso questo <a href=\""+urlConfirm+id+"\">link</a>.<br/>"+
+				corpoMsg("<br/>Gentile "+row.get(UTENTE_NOME)+" "+row.get(UTENTE_COGNOME)+",<br/>"
+				+ "</br/>benvenuto/a su <a href=\"http://www.depositolegale.it/\">depositolegale.it</a>.<br/>"
+				+"Per terminare la registrazione &egrave; necessario confermare il suo indirizzo di posta elettronica attraverso questo <a href=\""+urlConfirm+id+"\">link</a>.<br/>"+
 				"<br/>"+
-				"Nel caso in cui non sia stato lei a fare questa richiesta di registrazione o se non &egrave; pi&ugrave; interessato &egrave; sufficiente ignorare questo messaggio, "
-				+ "in caso si mancata verifica entro 2gg dalla data di richiesta la registrazione verrà annullata<br/>"
-				+ "<br/>"
-				+ "In caso di necessità ci puole contattare all'indirizzo info@depositolegale.it.<br/>" + 
-				"<br/>"
-				+ "Staf Magazzini Digitali");
+				"In caso di mancata conferma, trascorse 48 ore, la richiesta di registrazione verr&agrave; annullata.<br/>"+
+				"<br/>"+
+				"Per qualsiasi informazione pu&ograve; contattarci all'indirizzo info@depositolegale.it.<br/>" + 
+				"<br/>"));
 	}
 
 	private void sendMsgError() throws MessagingException {
-		sendMsg((String)row.get(UTENTE_EMAIL), "Magazzini Digitali - Esito registrazione", "<center><img src=\"http://www.depositolegale.it/wp-content/uploads/2010/10/logo.png\"/></center><br/>"
-				+ "<br/>Buongiorno, Sig. "+row.get(UTENTE_NOME)+" "+row.get(UTENTE_COGNOME)+"<br/>"
-				+ "</br/>Siamo spiacenti il Codice Fiscale risulta già registrato le chiediamo di verificare.<br/>"+
-				"<br/>"+
-				"In caso di necessità ci puole contattare all'indirizzo info@depositolegale.it.<br/>" + 
-				"<br/>"
-				+ "Staf Magazzini Digitali");
+		sendMsg((String)row.get(UTENTE_EMAIL), "Magazzini Digitali - Esito registrazione", 
+				corpoMsg("<br/>Gentile "+row.get(UTENTE_NOME)+" "+row.get(UTENTE_COGNOME)+",<br/>"
+				+ "</br/>siamo spiacenti ma il Codice Fiscale operatore da lei utilizzato risulta gi&agrave; registrato.<br/>"+
+				"Le chiedisamo cortesemente di verificare e, in caso di necessit&agrave; pu&ograve; contattarci all'indirizzo info@depositolegale.it.<br/>" + 
+				"<br/>"));
 	}
 
 	private String registra(Timestamp dataPreIscrizione, MDIstituzione mdIstituzione)

@@ -284,4 +284,15 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 			throw e;
 		}
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		if (string.equals("idIstituzioneID")){
+			string = "idIstituzione.nome";
+		}
+		if (string.equals("idRigthsID")){
+			string = "idRigths.nome";
+		}
+		return string;
+	}
 }

@@ -286,4 +286,12 @@ public class TabUtenti extends BasicTabServlet<MDUtentiBusiness, MDUtenti> {
 			throw e;
 		}
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		if (string.equals("idIstituzioneID")){
+			string = "idIstituzione.nome";
+		}
+		return string;
+	}
 }

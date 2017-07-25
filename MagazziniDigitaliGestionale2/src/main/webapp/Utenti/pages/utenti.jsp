@@ -53,7 +53,7 @@
 					edit : true,
 					inputClass: "tabTextEdit"
 				},
-				mail : {
+				email : {
 					title : '<s:text name="utenti.table.email" />',
 					width : '20%',
 					edit : true,

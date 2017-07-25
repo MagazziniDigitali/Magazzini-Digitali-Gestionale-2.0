@@ -89,4 +89,14 @@ public class TabSoftwareConfig extends BasicTabServlet<MDSoftwareConfigBusiness,
 	protected String resultOptions(List<MDSoftwareConfig> list) {
 		return null;
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		if (string.equals("idSoftwareID")){
+			string = "idSoftware.nome";
+		} else if (string.equals("idNodoID")){
+			string = "idNodo.nome";
+		}
+		return string;
+	}
 }

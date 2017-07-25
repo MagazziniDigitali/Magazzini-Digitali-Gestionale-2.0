@@ -72,6 +72,7 @@
 							<li><a href="ChangePassword.action">Cambio Password</a></li>
 						</ul>
 					</li>
+				<li><a href="Home.action?logout=true">Logout</a></li>
 				<!-- 
     <ul>
       <li><a href="Home.action">Monitor</a></li>

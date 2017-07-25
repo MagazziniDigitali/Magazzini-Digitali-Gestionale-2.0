@@ -152,18 +152,16 @@ public class ValidatePreIscrizione extends SendEmail{
 
 	private void sendMsg(String to,String nome, String cognome, String login, String password) throws MessagingException {
 		sendMsg(to, "Magazzini Digitali - Esito registrazione", 
-				"<center><img src=\"http://www.depositolegale.it/wp-content/uploads/2010/10/logo.png\"/></center><br/>"
-				+ "<br/>Buongiorno, Sig. "+nome+" "+cognome+"<br/>"
-				+ "</br/>La richiesta di registrazione &egrave; stata confermata.<br/>"+
+				corpoMsg("<br/>Gentile "+nome+" "+cognome+",<br/>"
+				+ "</br/>la sua richiesta di registrazione &egrave; stata confermata.<br/>"+
 				"<br/>"+
-				"Le credenziali per l'accesso sono:<br/>"
+				"Le credenziali per il primo accesso sono:<br/>"
 				+ "<br/>"
 				+ "Login: <b>"+login+"</b><br/>"
 				+ "Passowrd: <b>"+password+"</b><br/>"
-				+ "<br/>"
-				+ "In caso di necessit&agrave; ci puole contattare all'indirizzo info@depositolegale.it.<br/>" + 
-				"<br/>"
-				+ "Staf Magazzini Digitali");
+				+ "<br/>"+
+				"Per qualsiasi informazione pu&ograve; contattarci all'indirizzo <a href=\"mailto:info@depositolegale.it\">info@depositolegale.it</a>.<br/>" + 
+				"<br/>"));
 	}
 
 	private MDUtenti createUtente(MDPreRegistrazione mdPreRegistrazione, String password, MDIstituzione mdIstituzione ) throws ValidatePreIscrizioneException {

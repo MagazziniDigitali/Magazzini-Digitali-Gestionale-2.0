@@ -58,7 +58,8 @@
 				statoJob : {
 					title : '<s:text name="home.table.statoJob" />',
 					width : '10%',
-					edit : true
+					edit : true, 
+					sorting : false
 				}
 			}
 		});

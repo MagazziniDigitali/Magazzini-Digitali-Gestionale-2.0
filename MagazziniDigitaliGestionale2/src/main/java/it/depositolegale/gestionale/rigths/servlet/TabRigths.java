@@ -157,4 +157,12 @@ public class TabRigths extends BasicTabServlet<MDRigthsBusiness, MDRigths> {
 			throw e;
 		}
 	}
+
+	@Override
+	protected String checkSortKey(String string) {
+		if (string.equals("idModalitaAccessoID")){
+			string = "idModalitaAccesso.descrizione";
+		}
+		return string;
+	}
 }
