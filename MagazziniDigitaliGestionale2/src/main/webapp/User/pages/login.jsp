@@ -21,6 +21,7 @@
 		<s:password name="password" key="global.password" />
 		<s:submit name="submit" key="global.submit"/>
 	</s:form>
+	<br/>
 	<table class="menu">
 	  <tr>
 	    <td class="new">
@@ -31,6 +32,11 @@
 	         Hai dimenticato la password?
 	       </a>
 	     </td>
+	  </tr>
+	  <tr>
+	    <td colspan="2">
+	       * Le credenziali di login corrispondono al Codice fiscale indicato in fase di registrazione
+	    </td>
 	  </tr>
 	</table>
 	

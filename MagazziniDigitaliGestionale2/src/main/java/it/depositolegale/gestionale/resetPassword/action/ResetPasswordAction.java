@@ -104,15 +104,16 @@ public class ResetPasswordAction extends ActionSupport {
 						LoginAction.mdConfiguration.getSoftwareConfigString("send.email.password"));
 				sendEmail.sendMsg(mdUtenti.getEmail(), 
 						"Magazzini Digitali - Reset Password", 
-						"<center><img src=\"http://www.depositolegale.it/wp-content/uploads/2010/10/logo.png\"/></center><br/>"
-						+ "<br/>Buongiorno<br/>"
-						+ "</br/>Come richiesto abbiamo provveduto a cambiare la sua password di seguito trover&agrave; la nuova password.<br/>"+
+						sendEmail.corpoMsg(
+						"<br/>Gentile "+mdUtenti.getNome()+" "+mdUtenti.getCognome()+",<br/>"
+						+ "</br/>come richiesto, abbiamo provveduto a modificare la sua password.<br/>"
+						+ "Di seguito trover&agrave; la nuova password.<br/>"+
 						"<br/>"
 						+ "Passowrd: <b>"+password+"</b><br/>"
 						+ "<br/>"
-						+ "In caso di necessit&agrave; ci puole contattare all'indirizzo info@depositolegale.it.<br/>" + 
+						+ "Per qualsiasi informazione pu&ograve; contattarci all'indirizzo <a href=\"mailto:info@depositolegale.it\">info@depositolegale.it</a>.<br/>" + 
 						"<br/>"
-						+ "Staf Magazzini Digitali");
+						));
 				addActionMessage("Come richiesto la password è stata cambiata, a breve riceverà per email la nuova password");
 				result = true;
 			} else {
