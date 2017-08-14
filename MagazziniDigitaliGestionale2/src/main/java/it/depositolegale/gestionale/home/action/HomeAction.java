@@ -71,6 +71,8 @@ public class HomeAction extends LoginAction {
 
 	private String checkId = null;
 
+	private String checkIdFase = null;
+
 	/**
 	 * 
 	 */
@@ -93,7 +95,10 @@ public class HomeAction extends LoginAction {
 			
 			if (checkId != null){
 				try {
-					validatePreIscrizione = new ValidatePreIscrizione(checkId,
+					
+					validatePreIscrizione = new ValidatePreIscrizione(checkId, checkIdFase, 
+							mdConfiguration.getSoftwareConfigString("send.email.emailAdmin"),
+							mdConfiguration.getSoftwareConfigString("url.validate"),
 							mdConfiguration.getSoftwareConfigString("send.email.login"),
 							mdConfiguration.getSoftwareConfigString("send.email.password"));
 					validatePreIscrizione.inizializzaUtente();
@@ -382,6 +387,20 @@ public class HomeAction extends LoginAction {
 	 */
 	public void setCheckId(String checkId) {
 		this.checkId = checkId;
+	}
+
+	/**
+	 * @return the checkIdFase
+	 */
+	public String getCheckIdFase() {
+		return checkIdFase;
+	}
+
+	/**
+	 * @param checkIdFase the checkIdFase to set
+	 */
+	public void setCheckIdFase(String checkIdFase) {
+		this.checkIdFase = checkIdFase;
 	}
 
 //	public List<MDStato> getStato(){

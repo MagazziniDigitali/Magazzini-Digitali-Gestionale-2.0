@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -34,7 +35,9 @@ import mx.randalf.hibernate.exception.HibernateUtilException;
  */
 public class ReadGoogle {
 
-    /** Application name. */
+	private Logger log = Logger.getLogger(ReadGoogle.class);
+
+	/** Application name. */
     private static final String APPLICATION_NAME =
         "Google Sheets API Java Quickstart";
 
@@ -102,7 +105,7 @@ public class ReadGoogle {
                 .build();
         Credential credential = new AuthorizationCodeInstalledApp(
             flow, new LocalServerReceiver()).authorize("user");
-        System.out.println(
+        log.debug(
                 "Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
         return credential;
     }
@@ -181,7 +184,9 @@ public class ReadGoogle {
 
 			// chiave identificativa del documento da analizzare, che possiamo ricavare dall'url del documento:
 			// https://docs.google.com/spreadsheets/d/1tlNppLw7686Z5ybbgTM7aO0c6xGrFhQZP-_1X_ICZA4/edit
-			spreadsheetId = "1tlNppLw7686Z5ybbgTM7aO0c6xGrFhQZP-_1X_ICZA4";
+        	// https://docs.google.com/spreadsheets/d/1j_kfgIqVGg1Luvb7nXuBs-KOveF1wmSBImoSG5mSLf4/edit#gid=1121719036
+//			spreadsheetId = "1tlNppLw7686Z5ybbgTM7aO0c6xGrFhQZP-_1X_ICZA4";
+			spreadsheetId = "1j_kfgIqVGg1Luvb7nXuBs-KOveF1wmSBImoSG5mSLf4";
 			
 			// chiave utilizzata per il calcolo delle informazioni 
 			range = "'Risposte del modulo 1'!A"+nRow+":V"+nRow;

@@ -77,6 +77,8 @@ public class ElabGoogle extends SendEmail{
 
 	private int ALTRO = 20; // Altro (si prega di specificare)
 
+	private int AUTORIZZAZIONE_TRAT = 21; // Autorizzazione al trattamento dei dati personali (in assenza dell'autorizzazione al trattamento non sarà possibile effettuare il deposito) 
+
 	private List<Object> row = null;
 
 	private Integer progressivo = 0;
@@ -144,10 +146,15 @@ public class ElabGoogle extends SendEmail{
 						&& mdUtenti.getCodiceFiscale().equals(((String) row.get(UTENTE_CODICEFISCALE)).toUpperCase())) {
 					sendMsgError();
 				} else {
-					mdIstituzioneDAO = new MDIstituzioneDAO();
-					mdIstituzione = mdIstituzioneDAO.findByPIva((String) row.get(ISTITUZIONE_PIVA));
-					id = registra(dataPreIscrizione, mdIstituzione);
-					sendMsg(id);
+					if (row.size()>AUTORIZZAZIONE_TRAT &&
+							(row.get(AUTORIZZAZIONE_TRAT) != null && !((String) row.get(AUTORIZZAZIONE_TRAT)).trim().equals(""))) {
+						mdIstituzioneDAO = new MDIstituzioneDAO();
+						mdIstituzione = mdIstituzioneDAO.findByPIva((String) row.get(ISTITUZIONE_PIVA));
+						id = registra(dataPreIscrizione, mdIstituzione);
+						sendMsg(id);
+					} else {
+						sendMsgErrorNoAutorzzata();
+					}
 				}
 			}
 		} catch (NumberFormatException e) {
@@ -159,6 +166,13 @@ public class ElabGoogle extends SendEmail{
 		} catch (MessagingException e) {
 			throw new HibernateException(e.getMessage(), e);
 		}
+	}
+
+	private void sendMsgErrorNoAutorzzata() throws MessagingException {
+		sendMsg((String)row.get(UTENTE_EMAIL), "Magazzini Digitali - Esito registrazione", 
+				corpoMsg("<br/>Gentile "+row.get(UTENTE_NOME)+" "+row.get(UTENTE_COGNOME)+",<br/>"
+				+ "</br/>Ma &egrave; necessario dare l'autorizzazione al trattamenro dei dati personali per proseguire con la registrazione.<br/>"+
+				"<br/>"));
 	}
 
 	private void sendMsg(String id) throws MessagingException {
