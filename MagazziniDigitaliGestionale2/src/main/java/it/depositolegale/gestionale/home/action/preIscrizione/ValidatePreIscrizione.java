@@ -5,6 +5,7 @@ package it.depositolegale.gestionale.home.action.preIscrizione;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -41,6 +42,7 @@ import it.bncf.magazziniDigitali.utils.email.SendEmail;
 import it.bncf.magazziniDigitali.utils.password.PassGen;
 import it.depositolegale.gestionale.home.action.preIscrizione.exception.ValidatePreIscrizioneException;
 import it.depositolegale.gestionale.user.action.LoginAction;
+import mx.randalf.hibernate.FactoryDAO;
 import mx.randalf.hibernate.exception.HibernateUtilException;
 
 /**
@@ -189,7 +191,7 @@ public class ValidatePreIscrizione extends SendEmail {
 		try {
 			if (checkIdFase == null) {
 				dati.put("emailValidata", 1);
-				dati.put("dataEmailValidata1", new GregorianCalendar());
+				dati.put("dataEmailValidata1", new Timestamp(new GregorianCalendar().getTimeInMillis()));
 				checkIdFase = UUID.randomUUID().toString();
 				dati.put("checkIdFase", checkIdFase);
 
@@ -199,9 +201,11 @@ public class ValidatePreIscrizione extends SendEmail {
 					if (mdIstituzione == null) {
 						emailTo = emailAdmin;
 					} else {
+						FactoryDAO.initialize(mdPreRegistrazione.getIdIstituzione());
 						emailTo = findEmailAdmin(mdIstituzione);
 					}
 				} else {
+					FactoryDAO.initialize(mdPreRegistrazione.getIdIstituzione());
 					emailTo = findEmailAdmin(mdPreRegistrazione.getIdIstituzione());
 				}
 				
@@ -303,7 +307,7 @@ public class ValidatePreIscrizione extends SendEmail {
 			dati.put("idUtente", mdUtenti);
 
 			dati.put("emailValidata", 2);
-			dati.put("dataEmailValidata2", new GregorianCalendar());
+			dati.put("dataEmailValidata2", new Timestamp(new GregorianCalendar().getTimeInMillis()));
 			mdPreRegistrazioneBusiness = new MDPreRegistrazioneBusiness();
 			mdPreRegistrazioneBusiness.save(dati);
 			sendMsg(mdPreRegistrazione.getUtenteEmail(), mdPreRegistrazione.getUtenteNome(),
@@ -343,7 +347,7 @@ public class ValidatePreIscrizione extends SendEmail {
 
 	private void sendMsgFase2(String to, String nome, String cognome, String istituzione, String urlConfirm)
 			throws MessagingException {
-		sendMsg(to, "Magazzini Digitali - Esito registrazione",
+		sendMsg(to, "Magazzini Digitali - Richiesta convalida utenti",
 				corpoMsg("<br/>&Egrave; stata richiesta dall'utente " + nome + " " + cognome + " dell'istituzione "+istituzione+" la rchiesta di registrazione.<br/>"
 						+ "</br/>"
 						+"Per confermare le credenziali attraverso questo <a href=\""+urlConfirm+checkId+"&checkIdFase="+checkIdFase+"\">link</a>.<br/>"+
