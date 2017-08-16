@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
   <wb-module deploy-name="MagazziniDigitaliGestionale2">
     <wb-resource deploy-path="/" source-path="src/main/webapp"/>
+        <dependent-module archiveName="MagazziniDigitaliBusinessLogicUtils-2.0.19.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MagazziniDigitaliBusinessLogicUtils/MagazziniDigitaliBusinessLogicUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MagazziniDigitaliBusinessLogicDatabase-2.0.17.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MagazziniDigitaliBusinessLogicDatabase/MagazziniDigitaliBusinessLogicDatabase">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MagazziniDigitaliBusinessLogic-2.0.17.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MagazziniDigitaliBusinessLogic/MagazziniDigitaliBusinessLogic">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MagazziniDigitaliSolr-2.0.11.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MagazziniDigitaliSolr/MagazziniDigitaliSolr">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RandalfSolrCore-1.0.17.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RandalfSolrCore/RandalfSolrCore">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MagazziniDigitaliXsd-2.0.15.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MagazziniDigitaliXsd/MagazziniDigitaliXsd">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RandalfXsd-1.0.8.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RandalfXsd/RandalfXsd">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RandalfInterfaceException-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RandalfInterfaceException/RandalfInterfaceException">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RandalfHibernate-1.0.13.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RandalfHibernate/RandalfHibernate">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RandalfDigest-1.0.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RandalfDigest/RandalfDigest">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MagazziniDigitaliDemoniClientServices-1.0.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MagazziniDigitaliDemoniClientServices/MagazziniDigitaliDemoniClientServices">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MagazziniDigitaliServicesClient-2.0.14.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MagazziniDigitaliServicesClient/MagazziniDigitaliServicesClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RandalfTools-1.0.8.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RandalfTools/RandalfTools">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RandalfQuartzCore-1.0.6.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RandalfQuartzCore/RandalfQuartzCore">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RandalfConfiguration-1.0.3.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RandalfConfiguration/RandalfConfiguration">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RandalfSocket-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RandalfSocket/RandalfSocket">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/MagazziniDigitaliGestionale2/target/classes"/>
         <property name="context-root" value="MagazziniDigitaliGestionale##2.0.14"/>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
