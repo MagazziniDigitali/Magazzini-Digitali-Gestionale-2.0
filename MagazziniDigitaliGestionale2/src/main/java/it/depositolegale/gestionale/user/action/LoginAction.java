@@ -265,6 +265,14 @@ public class LoginAction extends ActionSupport {
 		this.idIstituto = idIstituto;
 	}
 
+	public String getUrlAltaRisoluzione(){
+		try {
+			return LoginAction.mdConfiguration.getSoftwareConfigString("urlAltaRisoluzione");
+		} catch (MDConfigurationException e) {
+			return "";
+		}
+	}
+
 	public String getIstituto() {
 		if ((istituto==null || istituto.trim().equals("")) && idIstituto==null){
 			return "[Magazzini Digitali]";

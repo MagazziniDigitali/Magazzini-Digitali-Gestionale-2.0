@@ -63,7 +63,7 @@
 						<ul class="flyout-content nav stacked">
 				<s:if test="!showMenuAdmin()">
 						<s:if test="showMenuAltaRisoluzione()">
-							<li><a href="AltaRisoluzione.action">Alta Risoluzione</a></li>
+							<li><a href="<s:property value="urlAltaRisoluzione" />">Alta Risoluzione</a></li>
 						</s:if>
 						<s:if test="showMenuBagit()">
 							<li><a href="http://md-front02.test.bncf.lan:5000/" target="_blank">Book Deposit</a></li>
