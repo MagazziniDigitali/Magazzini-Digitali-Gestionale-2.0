@@ -38,6 +38,11 @@ public class LoginAction extends ActionSupport {
 	public static String LOGIN = "login";
 
 	/**
+	 * Utilizzato per la indicare le pagine di Conferma
+	 */
+	public static String CONFIRM = "confirm";
+
+	/**
 	 * Utilizzato per la indicare le pagine di Home
 	 */
 	public static String HOME = "home";

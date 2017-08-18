@@ -179,7 +179,7 @@ public class ElabGoogle extends SendEmail{
 		sendMsg((String)row.get(UTENTE_EMAIL), "Magazzini Digitali - Esito registrazione", 
 				corpoMsg("<br/>Gentile "+row.get(UTENTE_NOME)+" "+row.get(UTENTE_COGNOME)+",<br/>"
 				+ "</br/>benvenuto/a su <a href=\"http://www.depositolegale.it/\">depositolegale.it</a>.<br/>"
-				+"Per terminare la registrazione &egrave; necessario confermare il suo indirizzo di posta elettronica attraverso questo <a href=\""+urlConfirm+id+"\">link</a>.<br/>"+
+				+"Per completare la registrazione &egrave; necessario confermare il suo indirizzo di posta elettronica attraverso questo <a href=\""+urlConfirm+id+"\">link</a>.<br/>"+
 				"<br/>"+
 				"In caso di mancata conferma, trascorse 48 ore, la richiesta di registrazione verr&agrave; annullata.<br/>"+
 				"<br/>"+

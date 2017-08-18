@@ -17,6 +17,11 @@
       <put-attribute name="title"  value="Login Utente"/>
       <put-attribute name="body"   value="/User/pages/login.jsp"/>      
   </definition>
+
+  <definition name="confirm" extends="baseLayout">
+      <put-attribute name="title"  value="Conferma Registrazione"/>
+      <put-attribute name="body"   value="/User/pages/confirm.jsp"/>      
+  </definition>
   
   <definition name="resetPassword" extends="baseLayout">
       <put-attribute name="title"  value="Reset Password"/>

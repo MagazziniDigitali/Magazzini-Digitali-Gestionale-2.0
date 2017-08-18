@@ -90,24 +90,30 @@ public class HomeAction extends LoginAction {
 		ValidatePreIscrizione validatePreIscrizione = null;
 		
 		result = super.execute();
-		
+
+		if (checkId != null){
+			try {
+				
+				validatePreIscrizione = new ValidatePreIscrizione(checkId, checkIdFase, 
+						mdConfiguration.getSoftwareConfigString("send.email.emailAdmin"),
+						mdConfiguration.getSoftwareConfigString("url.homeGestionale"),
+						mdConfiguration.getSoftwareConfigString("url.validate"),
+						mdConfiguration.getSoftwareConfigString("send.email.login"),
+						mdConfiguration.getSoftwareConfigString("send.email.password"));
+				validatePreIscrizione.inizializzaUtente();
+				if (checkIdFase!=null){
+					addActionMessage("L'utenza è stata creata.");
+				} else {
+					addActionMessage("La sua email è stata confermata, a breve riceverà le indicazioni per il login.");
+				}
+			} catch (ValidatePreIscrizioneException e){
+				addActionError(e.getMessage());
+			}
+			result = CONFIRM;
+		}
 		if (!result.equals(HOME) && !result.equals(ERROR)){
 			
-			if (checkId != null){
-				try {
-					
-					validatePreIscrizione = new ValidatePreIscrizione(checkId, checkIdFase, 
-							mdConfiguration.getSoftwareConfigString("send.email.emailAdmin"),
-							mdConfiguration.getSoftwareConfigString("url.validate"),
-							mdConfiguration.getSoftwareConfigString("send.email.login"),
-							mdConfiguration.getSoftwareConfigString("send.email.password"));
-					validatePreIscrizione.inizializzaUtente();
-					addActionMessage("La sua utenza è stata creata a breve riceverà la password.");
-				} catch (ValidatePreIscrizioneException e){
-					addActionError(e.getMessage());
-				}
-				result = LOGIN;
-			} else if (username != null){
+			if (username != null){
 				
 				request = ServletActionContext.getRequest();
 

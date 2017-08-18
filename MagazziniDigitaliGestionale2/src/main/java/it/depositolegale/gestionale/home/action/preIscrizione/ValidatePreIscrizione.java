@@ -58,16 +58,18 @@ public class ValidatePreIscrizione extends SendEmail {
 	private String checkIdFase = null;
 	private String emailAdmin = null;
 	private String urlConfirm = null;
+	private String urlMD = null;
 
 	/**
 	 * 
 	 */
-	public ValidatePreIscrizione(String checkId, String checkIdFase, String emailAdmin, String urlConfirm, String login, String password) {
+	public ValidatePreIscrizione(String checkId, String checkIdFase, String emailAdmin, String urlMD, String urlConfirm, String login, String password) {
 		super(login, password);
 		this.checkId = checkId;
 		this.checkIdFase = checkIdFase;
 		this.emailAdmin = emailAdmin;
 		this.urlConfirm = urlConfirm;
+		this.urlMD = urlMD;
 	}
 
 	public void inizializzaUtente() throws ValidatePreIscrizioneException {
@@ -78,6 +80,7 @@ public class ValidatePreIscrizione extends SendEmail {
 		HashTable<String, Object> dati = null;
 
 		try {
+			
 			mdPreRegistrazioneDAO = new MDPreRegistrazioneDAO();
 			mdPreRegistrazione = mdPreRegistrazioneDAO.findById(checkId);
 			if (mdPreRegistrazione != null) {
@@ -187,6 +190,7 @@ public class ValidatePreIscrizione extends SendEmail {
 		MDIstituzioneDAO mdIstituzioneDAO = null;
 		MDIstituzione mdIstituzione = null;
 		String emailTo = null;
+		boolean nuovoIstituto = false;
 
 		try {
 			if (checkIdFase == null) {
@@ -200,6 +204,7 @@ public class ValidatePreIscrizione extends SendEmail {
 					mdIstituzione = mdIstituzioneDAO.findByPIva(mdPreRegistrazione.getIstituzionePIva());
 					if (mdIstituzione == null) {
 						emailTo = emailAdmin;
+						nuovoIstituto = true;
 					} else {
 						FactoryDAO.initialize(mdPreRegistrazione.getIdIstituzione());
 						emailTo = findEmailAdmin(mdIstituzione);
@@ -215,6 +220,7 @@ public class ValidatePreIscrizione extends SendEmail {
 
 				mdPreRegistrazioneBusiness = new MDPreRegistrazioneBusiness();
 				mdPreRegistrazioneBusiness.save(dati);
+				sendMsgFase2User(mdPreRegistrazione.getUtenteEmail(), nuovoIstituto);
 				sendMsgFase2(emailTo, mdPreRegistrazione.getUtenteNome(),
 						mdPreRegistrazione.getUtenteCognome(), mdPreRegistrazione.getIstituzioneNome(), urlConfirm);
 			} else {
@@ -348,13 +354,23 @@ public class ValidatePreIscrizione extends SendEmail {
 	private void sendMsgFase2(String to, String nome, String cognome, String istituzione, String urlConfirm)
 			throws MessagingException {
 		sendMsg(to, "Magazzini Digitali - Richiesta convalida utenti",
-				corpoMsg("<br/>&Egrave; stata richiesta dall'utente " + nome + " " + cognome + " dell'istituzione "+istituzione+" la rchiesta di registrazione.<br/>"
+				corpoMsg("<br/>&Egrave; stata richiesta dall'utente " + nome + " " + cognome + " dell'istituzione "+istituzione+" la registrazione a Magazzini Digitali.<br/>"
 						+ "</br/>"
-						+"Per confermare le credenziali attraverso questo <a href=\""+urlConfirm+checkId+"&checkIdFase="+checkIdFase+"\">link</a>.<br/>"+
+						+"Pu&ograve; confermare le credenziali attraverso questo <a href=\""+urlConfirm+checkId+"&checkIdFase="+checkIdFase+"\">link</a>.<br/>"+
 						"<br/>"+
 						"In caso di mancata conferma, trascorse 48 ore, la richiesta di registrazione verr&agrave; annullata.<br/>"
 						+"<br/>"
 						+ "Per qualsiasi informazione pu&ograve; contattarci all'indirizzo <a href=\"mailto:info@depositolegale.it\">info@depositolegale.it</a>.<br/>"
+						+ "<br/>"));
+	}
+
+	private void sendMsgFase2User(String to, boolean nuovoIstituto)
+			throws MessagingException {
+		sendMsg(to, "Magazzini Digitali - Avanzamento Richiesta di registrazione",
+				corpoMsg("<br/>La sua email &egrave; stata confermata.<br/>"
+						+ "L'utenza verr&agrave; creata a seguito della validazione da parte del responsabile "+(nuovoIstituto?"di Magazzini Digitali":"della sua istituzione")
+						+ ", che dovr&agrave; avvenire entro 48 ore.</br>"
+						+ "Successivamente ricever&agrave; le credenziali per il login.<br/>"
 						+ "<br/>"));
 	}
 
@@ -363,7 +379,10 @@ public class ValidatePreIscrizione extends SendEmail {
 		sendMsg(to, "Magazzini Digitali - Esito registrazione",
 				corpoMsg("<br/>Gentile " + nome + " " + cognome + ",<br/>"
 						+ "</br/>la sua richiesta di registrazione &egrave; stata confermata.<br/>" + "<br/>"
-						+ "Le credenziali per il primo accesso sono:<br/>" + "<br/>" + "Login: <b>" + login
+						+ "Per accedere al sistema segua il seguente <a href=\""+urlMD+"\">link</a>.<br/>"
+						+ "Le credenziali per il primo accesso sono:<br/>" 
+						+ "<br/>" 
+						+ "Login: <b>" + login
 						+ "</b><br/>" + "Passowrd: <b>" + password + "</b><br/>" + "<br/>"
 						+ "Per qualsiasi informazione pu&ograve; contattarci all'indirizzo <a href=\"mailto:info@depositolegale.it\">info@depositolegale.it</a>.<br/>"
 						+ "<br/>"));

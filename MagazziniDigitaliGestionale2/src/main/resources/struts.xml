@@ -17,6 +17,7 @@
 		<action name="Login"
 			class="it.depositolegale.gestionale.user.action.LoginAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
 			<result name="home" type="tiles">home</result>
 			<result name="error" type="tiles">error</result>
 		</action>
@@ -25,77 +26,107 @@
 		<action name="Home"
 			class="it.depositolegale.gestionale.home.action.HomeAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="home" type="tiles">home</result>
 		</action>
 		<action name="HomeDetail"
 			class="it.depositolegale.gestionale.home.action.HomeDetailAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="homeDetail" type="tiles">homeDetail</result>
 		</action>
 		<action name="ResetPassword"
 			class="it.depositolegale.gestionale.resetPassword.action.ResetPasswordAction">
 			<result name="resetPassword" type="tiles">resetPassword</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="login" type="tiles">login</result>
 		</action>
 		<action name="AltaRisoluzione"
 			class="it.depositolegale.gestionale.altaRisoluzione.action.AltaRisoluzioneAction">
 			<result name="altaRisoluzione" type="tiles">altaRisoluzione</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="login" type="tiles">login</result>
 		</action>
 		<action name="ChangePassword"
 			class="it.depositolegale.gestionale.changePassword.action.ChangePasswordAction">
 			<result name="changePassword" type="tiles">changePassword</result>
 			<result name="home" type="tiles">home</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="login" type="tiles">login</result>
 		</action>
 		<action name="Istituti"
 			class="it.depositolegale.gestionale.istituti.action.IstitutiAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="istituti" type="tiles">istituti</result>
 		</action>
 		<action name="Biblioteche"
 			class="it.depositolegale.gestionale.istituti.action.IstitutiAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="istituti" type="tiles">biblioteche</result>
 		</action>
 		<action name="Utenti"
 			class="it.depositolegale.gestionale.utenti.action.UtentiAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="utenti" type="tiles">utenti</result>
 		</action>
 		<action name="Rigths"
 			class="it.depositolegale.gestionale.rigths.action.RigthsAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="rigths" type="tiles">rigths</result>
 		</action>
 		<action name="Software"
 			class="it.depositolegale.gestionale.software.action.SoftwareAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="software" type="tiles">software</result>
 		</action>
 		<action name="SoftwareConfig"
 			class="it.depositolegale.gestionale.software.action.SoftwareConfigAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="softwareConfig" type="tiles">softwareConfig</result>
 		</action>
 		<action name="Event"
 			class="it.depositolegale.gestionale.event.action.EventAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="event" type="tiles">event</result>
 		</action>
 		<action name="Nodi"
 			class="it.depositolegale.gestionale.nodi.action.NodiAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="nodi" type="tiles">nodi</result>
 		</action>
 		<action name="CompositionLevel"
 			class="it.depositolegale.gestionale.compositionLevel.action.CompositionLevelAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="compositionLevel" type="tiles">compositionLevel</result>
 		</action>
 		<action name="ModalitaAccesso"
 			class="it.depositolegale.gestionale.modalitaAccesso.action.ModalitaAccessoAction">
 			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
 			<result name="modalitaAccesso" type="tiles">modalitaAccesso</result>
 		</action>
 	</package>
