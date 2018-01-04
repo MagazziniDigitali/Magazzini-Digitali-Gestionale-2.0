@@ -128,8 +128,6 @@ public class ReadGoogle {
     	try {
 			readGoogle = new ReadGoogle("noreply@depositolegale.it", "ov6Uojiejai5", "http://md-gestionale.test.bncf.lan/MagazziniDigitaliGestionale/Home.action?checkId=");
 			System.out.println("Ricomincia da: "+readGoogle.analizza(2));
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} catch (HibernateUtilException e) {
@@ -137,7 +135,9 @@ public class ReadGoogle {
 		}
     }
 
-    public int analizza(int nRow) throws IOException, HibernateException, HibernateUtilException{
+    public int analizza(int nRow) throws 
+    //IOException, 
+    HibernateException, HibernateUtilException{
     	Sheets service = null;
     	List<Object> row = null;
     	ElabGoogle elabGoogle = null;
@@ -157,7 +157,7 @@ public class ReadGoogle {
 				}
 			}
 		} catch (IOException e) {
-			throw e;
+//			throw e;
 		} catch (HibernateException e) {
 			throw e;
 		} catch (HibernateUtilException e) {

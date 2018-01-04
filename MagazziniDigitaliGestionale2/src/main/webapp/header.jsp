@@ -45,6 +45,9 @@
 									<li><a href="Istituti.action">Depositanti</a></li>
 									<li><a href="Biblioteche.action">Biblioteche</a></li>
 									<li><a href="Utenti.action">Admin &amp; Operatori</a></li>
+									<s:if test="showMenuSuperAdmin()">
+										<li><a href="PreRegistrazione.action">Pre Registrazione</a></li>
+									</s:if>
 								</ul>
 							</li>
 							<li><a href="Rigths.action">Rights</a></li>

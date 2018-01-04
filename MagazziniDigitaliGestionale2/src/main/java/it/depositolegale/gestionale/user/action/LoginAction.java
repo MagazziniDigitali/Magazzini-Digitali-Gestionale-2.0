@@ -13,7 +13,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import it.bncf.magazziniDigitali.configuration.exception.MDConfigurationException;
 import it.bncf.magazziniDigitali.database.dao.MDIstituzioneDAO;
+import it.bncf.magazziniDigitali.database.dao.MDUtentiDAO;
 import it.bncf.magazziniDigitali.database.entity.MDIstituzione;
+import it.bncf.magazziniDigitali.database.entity.MDUtenti;
 import it.depositolegale.configuration.MDConfiguration;
 import it.depositolegale.www.utenti.Utenti;
 import mx.randalf.hibernate.exception.HibernateUtilException;
@@ -74,6 +76,8 @@ public class LoginAction extends ActionSupport {
 	protected String utente = null;
 
 	protected String amministratore = null;
+
+	protected String superAdmin = null;
 
 	protected Integer altaRisoluzione = null;
 
@@ -136,6 +140,7 @@ public class LoginAction extends ActionSupport {
 		idUtente = (String) session.get("idUtente");
 		utente = (String) session.get("utente");
 		amministratore = (String) session.get("amministratore");
+		superAdmin = (String) session.get("superAdmin");
 		altaRisoluzione = (Integer) session.get("altaRisoluzione");
 		bagit = (Integer) session.get("bagit");
 		pIva = (String) session.get("pIva");
@@ -152,6 +157,8 @@ public class LoginAction extends ActionSupport {
 		Map<String, Object> session = null;
 		MDIstituzioneDAO mdIstituzioneDAO = null;
 		MDIstituzione mdIstituzione = null;
+		MDUtentiDAO mdUtentiDAO = null;
+		MDUtenti mdUtenti= null;
 		String idIstituzione = null;
 
 		session = ActionContext.getContext().getSession();
@@ -200,6 +207,15 @@ public class LoginAction extends ActionSupport {
 				" "+
 				utenti.getDatiUtente().getNome());
 		session.put("amministratore", utenti.getDatiUtente().getAmministratore()+"");
+		try {
+			mdUtentiDAO = new MDUtentiDAO();
+			mdUtenti = mdUtentiDAO.findById(utenti.getDatiUtente().getId());
+			if (mdUtenti != null){
+				session.put("superAdmin", mdUtenti.getSuperAdmin()+"");
+			}
+		} catch (HibernateException e) {
+		} catch (HibernateUtilException e) {
+		}
 		ActionContext.getContext().setSession(session);
 
 	}
@@ -236,6 +252,14 @@ public class LoginAction extends ActionSupport {
 				idIstituto==null){
 //		if (session.get("loginedAdmin") != null &&
 //				session.get("loginedAdmin").equals("true")){
+			result = true;
+		}
+		return result;
+	}
+
+	public Boolean showMenuSuperAdmin(){
+		Boolean result = false;
+		if (superAdmin != null && superAdmin.trim().equals("1")){
 			result = true;
 		}
 		return result;
@@ -339,5 +363,19 @@ public class LoginAction extends ActionSupport {
 	 */
 	public void setLogout(String logout) {
 		this.logout = logout;
+	}
+
+	/**
+	 * @return the superAdmin
+	 */
+	public String getSuperAdmin() {
+		return superAdmin;
+	}
+
+	/**
+	 * @param superAdmin the superAdmin to set
+	 */
+	public void setSuperAdmin(String superAdmin) {
+		this.superAdmin = superAdmin;
 	}
 }

@@ -8,7 +8,7 @@
 	<constant name="struts.i18n.reload" value="false" />
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.action.excludePattern"
-		value="/TabHome,/TabHomeDetail,/TabIstituti,/TabUtenti,/TabRigths,/TabSoftware,/TabSoftwareConfig,/TabEvent,/TabNodi,/TabCompositionLevel,/TabModalitaAccesso,/TabRegioni" />
+		value="/TabHome,/TabHomeDetail,/TabIstituti,/TabUtenti,/TabPreRegistrazione,/TabRigths,/TabSoftware,/TabSoftwareConfig,/TabEvent,/TabNodi,/TabCompositionLevel,/TabModalitaAccesso,/TabRegioni" />
 	<package name="user" namespace="/" extends="struts-default">
 		<result-types>
 			<result-type name="tiles"
@@ -79,6 +79,13 @@
 			<result name="confirm" type="tiles">confirm</result>
 			<result name="error" type="tiles">error</result>
 			<result name="utenti" type="tiles">utenti</result>
+		</action>
+		<action name="PreRegistrazione"
+			class="it.depositolegale.gestionale.utenti.action.PreRegistrazioneAction">
+			<result name="login" type="tiles">login</result>
+			<result name="confirm" type="tiles">confirm</result>
+			<result name="error" type="tiles">error</result>
+			<result name="preRegistrazione" type="tiles">preRegistrazione</result>
 		</action>
 		<action name="Rigths"
 			class="it.depositolegale.gestionale.rigths.action.RigthsAction">

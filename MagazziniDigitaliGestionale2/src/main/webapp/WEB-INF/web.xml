@@ -25,6 +25,10 @@
     <servlet-class>it.depositolegale.gestionale.utenti.servlet.TabUtenti</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>TabPreRegistrazione</servlet-name>
+    <servlet-class>it.depositolegale.gestionale.utenti.servlet.TabPreRegistrazione</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>TabRigths</servlet-name>
     <servlet-class>it.depositolegale.gestionale.rigths.servlet.TabRigths</servlet-class>
   </servlet>
@@ -72,6 +76,10 @@
   <servlet-mapping>
     <servlet-name>TabUtenti</servlet-name>
     <url-pattern>/TabUtenti</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TabPreRegistrazione</servlet-name>
+    <url-pattern>/TabPreRegistrazione</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>TabRigths</servlet-name>

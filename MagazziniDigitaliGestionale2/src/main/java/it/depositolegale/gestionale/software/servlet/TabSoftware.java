@@ -34,7 +34,7 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 
 	private boolean createPremis = false;
 
-	private Logger log = Logger.getLogger(TabSoftware.class);
+	private static Logger log = Logger.getLogger(TabSoftware.class);
 	
 	/**
 	 * 
@@ -219,6 +219,13 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 	@Override
 	protected void postUpdate(String id, HashTable<String, Object> dati) 
 			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
+
+		super.postUpdate(id, dati);
+		createFilePremis(id, dati, createPremis);
+	}
+	
+	public static void createFilePremis(String id, HashTable<String, Object> dati, boolean createPremis)
+			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
 		AgentXsd<?, ?, ?, ?, ?, ?> agentXsd = null;
 		File filePremis = null;
 		GregorianCalendar gc = new GregorianCalendar();
@@ -226,8 +233,6 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 		DecimalFormat df3 = new DecimalFormat("000");
 		DecimalFormat df2 = new DecimalFormat("00");
 		String agId = null;
-
-		super.postUpdate(id, dati);
 
 		try {
 			if (createPremis){

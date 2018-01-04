@@ -105,7 +105,7 @@ public class ElabGoogle extends SendEmail{
 			row.add("Massimiliano");
 			row.add("Randazzo");
 			elabGoogle = new ElabGoogle(row, null, "noreply@depositolegale.it", "ov6Uojiejai5", "http://md-gestionale.test.bncf.lan/MagazziniDigitaliGestionale/Home.action?checkId=");
-			elabGoogle.sendMsg("AAAAAAAAAAAA");
+			elabGoogle.sendMsg("AAAAAAAAAAAA", "massimiliano.randazzo@gmail.com", "Massimiliano", "Randazzo", "http://gestionaletest.depositolegale.it/");
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
@@ -151,7 +151,8 @@ public class ElabGoogle extends SendEmail{
 						mdIstituzioneDAO = new MDIstituzioneDAO();
 						mdIstituzione = mdIstituzioneDAO.findByPIva((String) row.get(ISTITUZIONE_PIVA));
 						id = registra(dataPreIscrizione, mdIstituzione);
-						sendMsg(id);
+						sendMsg(id, (String)row.get(UTENTE_EMAIL), (String)row.get(UTENTE_NOME), 
+								(String)row.get(UTENTE_COGNOME), urlConfirm);
 					} else {
 						sendMsgErrorNoAutorzzata();
 					}
@@ -175,9 +176,9 @@ public class ElabGoogle extends SendEmail{
 				"<br/>"));
 	}
 
-	private void sendMsg(String id) throws MessagingException {
-		sendMsg((String)row.get(UTENTE_EMAIL), "Magazzini Digitali - Esito registrazione", 
-				corpoMsg("<br/>Gentile "+row.get(UTENTE_NOME)+" "+row.get(UTENTE_COGNOME)+",<br/>"
+	public  void sendMsg(String id, String email, String nome, String cognome, String urlConfirm) throws MessagingException {
+		sendMsg(email, "Magazzini Digitali - Esito registrazione", 
+				corpoMsg("<br/>Gentile "+nome+" "+cognome+",<br/>"
 				+ "</br/>benvenuto/a su <a href=\"http://www.depositolegale.it/\">depositolegale.it</a>.<br/>"
 				+"Per completare la registrazione &egrave; necessario confermare il suo indirizzo di posta elettronica attraverso questo <a href=\""+urlConfirm+id+"\">link</a>.<br/>"+
 				"<br/>"+

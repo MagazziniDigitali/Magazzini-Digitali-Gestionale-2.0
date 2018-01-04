@@ -32,7 +32,7 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 
 	private boolean createPremis = false;
 
-	private Logger log = Logger.getLogger(TabIstituti.class);
+	private static Logger log = Logger.getLogger(TabIstituti.class);
 
 	/**
 	 * 
@@ -290,6 +290,12 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 	@Override
 	protected void postUpdate(String id, HashTable<String, Object> dati) 
 			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
+		super.postUpdate(id, dati);
+		createFilePremis(id, dati, createPremis);
+	}
+
+	public static void createFilePremis(String id, HashTable<String, Object> dati, boolean createPremis)
+			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
 		AgentXsd<?, ?, ?, ?, ?, ?> agentXsd = null;
 		File filePremis = null;
 		GregorianCalendar gc = new GregorianCalendar();
@@ -298,7 +304,6 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 		DecimalFormat df2 = new DecimalFormat("00");
 		String agId = null;
 
-		super.postUpdate(id, dati);
 
 		try {
 			if (createPremis){
@@ -321,7 +326,10 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 				}
 				
 				agentXsd.addAgentName((String) dati.get("nome"));
-				agentXsd.setAgentType(PremisXsd.DEPOSITANTE);
+				if (((Integer)dati.get("bibliotecaDepositaria")==0))
+					agentXsd.setAgentType(PremisXsd.DEPOSITANTE);
+				else 
+					agentXsd.setAgentType(PremisXsd.DEPOSITARIO);
 				
 				if (dati.get("note") != null &&
 						!((String)dati.get("note")).trim().equals("")){
@@ -337,8 +345,10 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 				}
 				filePremis = new File(
 						OggettoDigitale.genFilePremis(
-								LoginAction.mdConfiguration.getSoftwareConfigString("path.premis"), 
-								"Agent_Depositante",
+								LoginAction.mdConfiguration.getSoftwareConfigString("path.premis"),
+								(((Integer)dati.get("bibliotecaDepositaria")==0)?
+											"Agent_Depositante":
+												"Agent_Depositario"),
 								agId,".premis"));
 
 				agentXsd.write(filePremis, false);

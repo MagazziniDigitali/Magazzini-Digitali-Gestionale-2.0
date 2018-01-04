@@ -17,7 +17,7 @@
       <put-attribute name="title"  value="Login Utente"/>
       <put-attribute name="body"   value="/User/pages/login.jsp"/>      
   </definition>
-
+  
   <definition name="confirm" extends="baseLayout">
       <put-attribute name="title"  value="Conferma Registrazione"/>
       <put-attribute name="body"   value="/User/pages/confirm.jsp"/>      
@@ -66,6 +66,11 @@
   <definition name="utenti" extends="baseLayout">
       <put-attribute name="title"  value="Gestione Utenti"/>
       <put-attribute name="body"   value="/Utenti/pages/utenti.jsp"/>      
+  </definition>
+  
+  <definition name="preRegistrazione" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Pre Registrazioni"/>
+      <put-attribute name="body"   value="/Utenti/pages/preRegistrazione.jsp"/>      
   </definition>
   
   <definition name="rigths" extends="baseLayout">

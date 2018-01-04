@@ -4,6 +4,7 @@
 package it.depositolegale.gestionale.home.action.preIscrizione;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
@@ -41,9 +42,14 @@ import it.bncf.magazziniDigitali.database.entity.MDUtenti;
 import it.bncf.magazziniDigitali.utils.email.SendEmail;
 import it.bncf.magazziniDigitali.utils.password.PassGen;
 import it.depositolegale.gestionale.home.action.preIscrizione.exception.ValidatePreIscrizioneException;
+import it.depositolegale.gestionale.istituti.servlet.TabIstituti;
+import it.depositolegale.gestionale.software.servlet.TabSoftware;
 import it.depositolegale.gestionale.user.action.LoginAction;
+import it.depositolegale.gestionale.utenti.servlet.TabUtenti;
+import it.magazziniDigitali.xsd.premis.exception.PremisXsdException;
 import mx.randalf.hibernate.FactoryDAO;
 import mx.randalf.hibernate.exception.HibernateUtilException;
+import mx.randalf.xsd.exception.XsdException;
 
 /**
  * @author massi
@@ -63,7 +69,8 @@ public class ValidatePreIscrizione extends SendEmail {
 	/**
 	 * 
 	 */
-	public ValidatePreIscrizione(String checkId, String checkIdFase, String emailAdmin, String urlMD, String urlConfirm, String login, String password) {
+	public ValidatePreIscrizione(String checkId, String checkIdFase, String emailAdmin, 
+			String urlMD, String urlConfirm, String login, String password) {
 		super(login, password);
 		this.checkId = checkId;
 		this.checkIdFase = checkIdFase;
@@ -185,7 +192,7 @@ public class ValidatePreIscrizione extends SendEmail {
 		}
 	}
 
-	private void confirmFase1(HashTable<String, Object> dati, MDPreRegistrazione mdPreRegistrazione, String urlConfirm) throws ValidatePreIscrizioneException {
+	public void confirmFase1(HashTable<String, Object> dati, MDPreRegistrazione mdPreRegistrazione, String urlConfirm) throws ValidatePreIscrizioneException {
 		MDPreRegistrazioneBusiness mdPreRegistrazioneBusiness = null;
 		MDIstituzioneDAO mdIstituzioneDAO = null;
 		MDIstituzione mdIstituzione = null;
@@ -284,7 +291,7 @@ public class ValidatePreIscrizione extends SendEmail {
 		return emailTo;
 	}
 
-	private void confirmFase2(HashTable<String, Object> dati, MDPreRegistrazione mdPreRegistrazione) throws ValidatePreIscrizioneException {
+	public void confirmFase2(HashTable<String, Object> dati, MDPreRegistrazione mdPreRegistrazione) throws ValidatePreIscrizioneException {
 		MDPreRegistrazioneBusiness mdPreRegistrazioneBusiness = null;
 		MDIstituzioneDAO mdIstituzioneDAO = null;
 		MDIstituzione mdIstituzione = null;
@@ -417,6 +424,7 @@ public class ValidatePreIscrizione extends SendEmail {
 
 			id = mdUtentiBusiness.save(dati);
 
+			TabUtenti.createFilePremis(id, dati, true);
 			mdUtentiDAO = new MDUtentiDAO();
 			mdUtenti = mdUtentiDAO.findById(id);
 		} catch (HibernateException e) {
@@ -441,6 +449,18 @@ public class ValidatePreIscrizione extends SendEmail {
 			log.error(e.getMessage(), e);
 			throw new ValidatePreIscrizioneException(e.getMessage(), e);
 		} catch (NamingException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (MDConfigurationException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (PremisXsdException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (XsdException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (IOException e) {
 			log.error(e.getMessage(), e);
 			throw new ValidatePreIscrizioneException(e.getMessage(), e);
 		}
@@ -522,6 +542,7 @@ public class ValidatePreIscrizione extends SendEmail {
 				dati.put("bagit", "0");
 			}
 			id = mdIstituzioneBusiness.save(dati);
+			TabIstituti.createFilePremis(id, dati, true);
 			mdIstituzione = mdIstituzioneBusiness.findById(id);
 		} catch (HibernateException e) {
 			log.error(e.getMessage(), e);
@@ -548,6 +569,15 @@ public class ValidatePreIscrizione extends SendEmail {
 			log.error(e.getMessage(), e);
 			throw new ValidatePreIscrizioneException(e.getMessage(), e);
 		} catch (NamingException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (PremisXsdException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (XsdException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (IOException e) {
 			log.error(e.getMessage(), e);
 			throw new ValidatePreIscrizioneException(e.getMessage(), e);
 		}
@@ -587,6 +617,7 @@ public class ValidatePreIscrizione extends SendEmail {
 
 			id = mdSoftwareBusiness.save(dati);
 
+			TabSoftware.createFilePremis(id, dati, true);
 			mdSoftwareDAO = new MDSoftwareDAO();
 			duplicaConfAltaRisoluzione("TD_MD", mdSoftwareDAO.findById(id), password,
 					mdPreRegistrazione.getIstituzionePIva());
@@ -616,6 +647,18 @@ public class ValidatePreIscrizione extends SendEmail {
 			throw new ValidatePreIscrizioneException(e.getMessage(), e);
 		} catch (ValidatePreIscrizioneException e) {
 			throw e;
+		} catch (MDConfigurationException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (PremisXsdException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (XsdException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
+		} catch (IOException e) {
+			log.error(e.getMessage(), e);
+			throw new ValidatePreIscrizioneException(e.getMessage(), e);
 		}
 	}
 
