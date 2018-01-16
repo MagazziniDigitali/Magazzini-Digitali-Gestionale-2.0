@@ -9,7 +9,7 @@
 
 		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
 		<property name="hibernate.connection.password">Magazzini</property>
-		<property name="hibernate.connection.url">jdbc:mysql://md-dbserver.prod.bncf.lan:3306/MagazziniDigitali?autoReconnect=true&amp;serverTimezone=UTC</property>
+		<property name="hibernate.connection.url">jdbc:mysql://md-dbserver.prod.bncf.lan:3306/MagazziniDigitali?autoReconnect=true&amp;serverTimezone=UTC&amp;useSSL=false</property>
 		<property name="hibernate.connection.username">MD</property>
 		<property name="hibernate.connection.validationQuery">select 1</property>
 
@@ -19,7 +19,7 @@
 		<property name="hibernate.connection.autoReconnect">true</property>
 
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
-		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 
 		<!-- Quando una connessione inattiva viene rimosso dal pool (in seconda). 
 			Sospensione di default: 0, non scadono mai. -->

@@ -1,5 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>MagazziniDigitaliGestionale2</artifactId>
 	<packaging>war</packaging>
@@ -36,6 +38,16 @@
 			<groupId>displaytag</groupId>
 			<artifactId>displaytag</artifactId>
 			<version>1.2</version>
+			<exclusions>
+		      <exclusion> 
+		        <groupId>org.slf4j</groupId>
+		        <artifactId>slf4j-log4j12</artifactId>
+		      </exclusion>
+		      <exclusion> 
+		        <groupId>log4j</groupId>
+		        <artifactId>log4j</artifactId>
+		      </exclusion>
+		    </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.struts.xwork</groupId>
@@ -99,12 +111,12 @@
 				it.bncf.magazziniDigitali.businessLogic.utils
 			</groupId>
 			<artifactId>MagazziniDigitaliBusinessLogicUtils</artifactId>
-			<version>2.0.21</version>
+			<version>2.0.22</version>
 		</dependency>
 		<dependency>
 			<groupId>it.bncf.magazziniDigitali.services.client</groupId>
 			<artifactId>MagazziniDigitaliServicesClient</artifactId>
-			<version>2.0.17</version>
+			<version>2.0.18</version>
 		</dependency>
 		<dependency>
 			<groupId>
@@ -113,7 +125,7 @@
 			<artifactId>
 				MagazziniDigitaliVerificaPreRegistrazione
 			</artifactId>
-			<version>2.0.5</version>
+			<version>2.0.6</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -125,16 +137,50 @@
 			<artifactId>slf4j-jdk14</artifactId>
 			<version>1.7.12</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.10.0</version>
+		</dependency>
+		    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>1.7.5</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.5</version>
+    </dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>MagazziniDigitaliGestionale##${project.version}</finalName>
 		<plugins>
 			<plugin>
+
+				<artifactId>maven-war-plugin</artifactId>
+				 <version>3.2.0</version>
+				<!-- 
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
+				 -->
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					
+					<webResources>
+					  <resource>
+				        <directory>src/main/config/${myAction}</directory>
+				        <targetPath>WEB-INF/</targetPath>
+				        <includes>
+				            <include>jdbc.properties</include>
+				        </includes>
+				    </resource>
+					</webResources>
 				</configuration>
 				<executions>
             		<execution>
@@ -147,6 +193,8 @@
                         			tofile="${project.build.outputDirectory}/hibernate.cfg.xml"/>
                   				<copy file="src/main/resources/log4j.svil.xml"
                         			tofile="${project.build.outputDirectory}/log4j.xml"/>
+                  				<copy file="src/main/webapp/WEB-INF/jdbc.svil.properties"
+                        			tofile="${project.build.outputDirectory}/../MagazziniDigitaliGestionale##${project.version}/WEB-INF/jdbc.properties"/>
                 			</tasks>
               			</configuration>
             		</execution>
@@ -169,7 +217,19 @@
 	</build>
 	<profiles>
 		<profile>
+			<id>default</id>
+			<properties>
+				<myAction>svil</myAction>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
 			<id>prod</id>
+			<properties>
+				<myAction>prod</myAction>
+			</properties>
 			<build>
 				<finalName>MagazziniDigitaliGestionale##${project.version}-prod</finalName>
 				<plugins>
@@ -177,7 +237,8 @@
            				<artifactId>maven-antrun-plugin</artifactId>
            				<executions>
              				<execution>
-             					<phase>test</phase>
+             					<!--  phase>test</phase-->
+             				   <phase>prepare-package</phase>
                					<goals>
                  					<goal>run</goal>
                					</goals>
@@ -189,8 +250,8 @@
                          					tofile="${project.build.outputDirectory}/hibernate.cfg.xml"/>
 		                  				<copy file="src/main/resources/log4j.prod.xml"
 		                        			tofile="${project.build.outputDirectory}/log4j.xml"/>
-                 					</tasks>
-               					</configuration>
+             				     </tasks>
+             				   </configuration>
              				</execution>
              				<execution>
              					<id>scp-to-remote</id>
@@ -233,6 +294,9 @@
 		</profile>
 		<profile>
 			<id>test</id>
+			<properties>
+				<myAction>test</myAction>
+			</properties>
 			<build>
 				<finalName>MagazziniDigitaliGestionale##${project.version}-test</finalName>
 				<plugins>
@@ -295,10 +359,15 @@
 			</build>
 		</profile>
 	</profiles>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
 	<parent>
 		<groupId>it.depositolegale.gestionale</groupId>
 		<artifactId>MagazziniDigitaliGestionale_2.0</artifactId>
 		<version>2.0.0</version>
 	</parent>
-	<version>2.0.25</version>
+	<version>2.0.26</version>
 </project>
