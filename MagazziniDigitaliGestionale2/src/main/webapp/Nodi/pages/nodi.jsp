@@ -44,6 +44,20 @@
 					edit : true,
 					inputClass: "tabTextEdit"
 				},
+				tipo : {
+					title : '<s:text name="nodi.table.tipo" />',
+					edit : true,
+					options: { 'F': '<s:text name="nodi.table.tipoFileSystem" />', 
+						'M': '<s:text name="nodi.table.tipoMD" />', 
+						'S': '<s:text name="nodi.table.tipoS3" />' },
+					inputClass: "tabTextEdit"
+				},
+				pathStorage : {
+					title : '<s:text name="nodi.table.pathStorage" />',
+					edit : true,
+					visibility : 'hidden',
+					inputClass: "tabTextEdit"
+				},
 				rsync : {
 					title : '<s:text name="nodi.table.rsync" />',
 					edit : true,
@@ -63,8 +77,33 @@
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"
 				},
-				pathStorage : {
-					title : '<s:text name="nodi.table.pathStorage" />',
+				s3Url : {
+					title : '<s:text name="nodi.table.s3Url" />',
+					edit : true,
+					visibility : 'hidden',
+					inputClass: "tabTextEdit"
+				},
+				s3Region : {
+					title : '<s:text name="nodi.table.s3Region" />',
+					edit : true,
+					visibility : 'hidden',
+					options: { 'us-east-1': 'us-east-1'},
+					inputClass: "tabTextEdit"
+				},
+				s3AccessKey : {
+					title : '<s:text name="nodi.table.s3AccessKey" />',
+					edit : true,
+					visibility : 'hidden',
+					inputClass: "tabTextEdit"
+				},
+				s3SecretKey : {
+					title : '<s:text name="nodi.table.s3SecretKey" />',
+					edit : true,
+					visibility : 'hidden',
+					inputClass: "tabTextEdit"
+				},
+				s3BucketName : {
+					title : '<s:text name="nodi.table.s3BucketName" />',
 					edit : true,
 					visibility : 'hidden',
 					inputClass: "tabTextEdit"

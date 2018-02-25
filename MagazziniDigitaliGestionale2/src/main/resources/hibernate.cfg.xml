@@ -9,8 +9,8 @@
 
 		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
 		<property name="hibernate.connection.password">Magazzini</property>
-		<property name="hibernate.connection.url">jdbc:mysql://dbservertest.bncf.lan:3306/MagazziniDigitali_Svil?autoReconnect=true&amp;serverTimezone=UTC</property>
-		<property name="hibernate.connection.username">MD</property>
+		<property name="hibernate.connection.url">jdbc:mysql://dbservertest.bncf.lan:3306/MagazziniDigitaliSviluppo?autoReconnect=true&amp;serverTimezone=UTC</property>
+		<property name="hibernate.connection.username">MD_Sviluppo</property>
 		<property name="hibernate.connection.validationQuery">select 1</property>
 
 		<property name="connection.autoReconnect">true</property>

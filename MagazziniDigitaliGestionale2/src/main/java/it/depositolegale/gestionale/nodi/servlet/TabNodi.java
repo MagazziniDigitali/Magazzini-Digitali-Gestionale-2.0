@@ -69,21 +69,47 @@ public class TabNodi extends BasicTabServlet<MDNodiBusiness, MDNodi> {
 			dati.put("descrizione", request.getParameter("descrizione"));
 		}
 
-		if (request.getParameter("rsync") != null) {
-			dati.put("rsync", request.getParameter("rsync"));
+		if (request.getParameter("tipo") != null) {
+			dati.put("tipo", request.getParameter("tipo"));
+			if (request.getParameter("tipo").equals("F")) {
+				if (request.getParameter("pathStorage") != null) {
+					dati.put("pathStorage", request.getParameter("pathStorage"));
+				}
+			} else if (request.getParameter("tipo").equals("M")) {
+				if (request.getParameter("rsync") != null) {
+					dati.put("rsync", request.getParameter("rsync"));
+				}
+
+				if (request.getParameter("rsyncPassword") != null) {
+					dati.put("rsyncPassword", request.getParameter("rsyncPassword"));
+				}
+
+				if (request.getParameter("urlCheckStorage") != null) {
+					dati.put("urlCheckStorage", request.getParameter("urlCheckStorage"));
+				}
+			} else if (request.getParameter("tipo").equals("S")) {
+				if (request.getParameter("s3Url") != null) {
+					dati.put("s3Url", request.getParameter("s3Url"));
+				}
+
+				if (request.getParameter("s3Region") != null) {
+					dati.put("s3Region", request.getParameter("s3Region"));
+				}
+
+				if (request.getParameter("s3AccessKey") != null) {
+					dati.put("s3AccessKey", request.getParameter("s3AccessKey"));
+				}
+
+				if (request.getParameter("s3SecretKey") != null) {
+					dati.put("s3SecretKey", request.getParameter("s3SecretKey"));
+				}
+
+				if (request.getParameter("s3BucketName") != null) {
+					dati.put("s3BucketName", request.getParameter("s3BucketName"));
+				}
+			}
 		}
 
-		if (request.getParameter("rsyncPassword") != null) {
-			dati.put("rsyncPassword", request.getParameter("rsyncPassword"));
-		}
-
-		if (request.getParameter("urlCheckStorage") != null) {
-			dati.put("urlCheckStorage", request.getParameter("urlCheckStorage"));
-		}
-
-		if (request.getParameter("pathStorage") != null) {
-			dati.put("pathStorage", request.getParameter("pathStorage"));
-		}
 
 		if (request.getParameter("active") != null) {
 			dati.put("active", new Integer(request.getParameter("active")));

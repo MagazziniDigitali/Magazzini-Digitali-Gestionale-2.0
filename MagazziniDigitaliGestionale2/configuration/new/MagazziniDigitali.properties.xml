@@ -4,13 +4,13 @@
     <comment>Fie di configurazione del progetto MD Versione 2.x.x</comment>
 
     <!-- URL da contattare per poter fare l'autenticazione del Software -->
-    <entry key="software.URLAuthentication">http://md-tomcat01.test.bncf.lan:8081/MagazziniDigitaliServices/services/AuthenticationSoftwarePort?wsdl</entry>
+    <entry key="software.URLAuthentication">http://localhost:8080/MagazziniDigitaliServices/services/AuthenticationSoftwarePort?wsdl</entry>
 
     <!-- Configurazione Software Interfaccia Api -->
     <entry key="software.GS.login">GS_MD</entry>
     <entry key="software.GS.password">m@9@221n1</entry>
 
     <!-- URL da contattare per poter fare l'autenticazione degli utenti -->
-    <entry key="utenti.URLAuthentication">http://md-tomcat01.test.bncf.lan:8081/MagazziniDigitaliServices/services/AuthenticationUtentiPort?wsdl</entry>
+    <entry key="utenti.URLAuthentication">http://localhost:8080/MagazziniDigitaliServices/services/AuthenticationUtentiPort?wsdl</entry>
 
 </properties>

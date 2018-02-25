@@ -109,7 +109,7 @@ public class ReadGoogle {
 			flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
 					.setDataStoreFactory(DATA_STORE_FACTORY).setAccessType("offline").build();
 			credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
-			log.debug("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
+			log.debug("\n"+"Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
 		} catch (FileNotFoundException e) {
 			throw e;
 		} catch (IOException e) {

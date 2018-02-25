@@ -159,7 +159,6 @@ public class TabHome extends BasicTabServlet<MDFilesTmpBusiness, MDFileTmpTab> {
 			}
 		}
 		jsonArray += "\n]\n";
-//		System.out.println(jsonArray);
 		return jsonArray;
 	}
 
