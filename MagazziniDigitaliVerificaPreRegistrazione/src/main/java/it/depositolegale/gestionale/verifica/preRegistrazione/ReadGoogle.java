@@ -181,6 +181,7 @@ public class ReadGoogle {
 				}
 			}
 		} catch (IOException e) {
+			log.error(e.getMessage(), e);
 			// throw e;
 		} catch (HibernateException e) {
 			throw e;
