@@ -30,6 +30,17 @@
     <link rel="stylesheet" href="style/ChangePassword.css"/>
     <link rel="stylesheet" href="style/Istituti.css"/>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!--  Ambiente di produzione -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117852062-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-117852062-1');
+    </script>
+
     <script src="script/jquery-1.11.3.js"></script>
     <script src="script/1.12.0-rc.2/jquery-ui.min.js"></script>
 
