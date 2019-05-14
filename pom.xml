@@ -9,6 +9,22 @@
   	<module>MagazziniDigitaliGestionale2</module>
   	<module>MagazziniDigitaliVerificaPreRegistrazione</module>
   </modules>
+	<repositories>
+		<repository>
+			<id>bncf</id>
+			<url>http://maven.bncf.firenze.sbn.it/artifactory/libs-release</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>bncf-snapshots</id>
+			<url>http://maven.bncf.firenze.sbn.it/artifactory/libs-snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
 	<distributionManagement>
 		<repository>
 			<id>mvn-bncf</id>
