@@ -5,7 +5,8 @@ package it.depositolegale.gestionale.user.action;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -27,7 +28,7 @@ import mx.randalf.hibernate.exception.HibernateUtilException;
  */
 public class LoginAction extends ActionSupport {
 
-	public Logger log = Logger.getLogger(LoginAction.class);
+	public Logger log = LogManager.getLogger(LoginAction.class);
 
 	/**
 	 * Utilizzato per la indicare le pagine di Login

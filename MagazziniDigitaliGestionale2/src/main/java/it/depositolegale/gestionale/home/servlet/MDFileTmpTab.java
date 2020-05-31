@@ -5,7 +5,8 @@ package it.depositolegale.gestionale.home.servlet;
 
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import it.bncf.magazziniDigitali.configuration.exception.MDConfigurationException;
 import it.bncf.magazziniDigitali.database.entity.MDFilesTmp;
@@ -22,7 +23,7 @@ public class MDFileTmpTab implements Serializable {
 	 */
 	private static final long serialVersionUID = -1743362002559938710L;
 
-	private Logger log = Logger.getLogger(MDFileTmpTab.class);
+	private Logger log = LogManager.getLogger(MDFileTmpTab.class);
 
 	private String id;
 

@@ -3,7 +3,8 @@
  */
 package it.depositolegale.gestionale.altaRisoluzione.action;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import it.bncf.magazziniDigitali.configuration.exception.MDConfigurationException;
 import it.depositolegale.gestionale.user.action.LoginAction;
@@ -14,7 +15,7 @@ import it.depositolegale.gestionale.user.action.LoginAction;
  */
 public class AltaRisoluzioneAction extends LoginAction {
 
-	private Logger log = Logger.getLogger(AltaRisoluzioneAction.class);
+	private Logger log = LogManager.getLogger(AltaRisoluzioneAction.class);
 
 	/**
 	 * Utilizzato per la indicare le pagine di Login

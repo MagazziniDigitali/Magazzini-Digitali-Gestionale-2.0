@@ -15,12 +15,12 @@
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-core</artifactId>
-			<version>2.3.8</version>
+			<version>2.5.22</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-tiles-plugin</artifactId>
-			<version>2.3.8</version>
+			<version>2.5.22</version>
 			<!-- version>2.3.30</version -->
 		</dependency>
 		<!-- <dependency> <groupId>org.apache.struts.xwork</groupId> <artifactId>xwork-core</artifactId> 
@@ -52,27 +52,27 @@
 		<dependency>
 			<groupId>org.apache.struts.xwork</groupId>
 			<artifactId>xwork-core</artifactId>
-			<version>2.3.8</version>
+			<version>2.3.37</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>1.8.0</version>
+			<version>1.9.4</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-digester</groupId>
 			<artifactId>commons-digester</artifactId>
-			<version>2.0</version>
+			<version>2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			<version>2.4</version>
+			<version>2.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.12</version>
+			<version>1.7.30</version>
 		</dependency>
 		<dependency>
 			<groupId>asm</groupId>
@@ -82,27 +82,27 @@
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
-			<version>3.1</version>
+			<version>3.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>6.0.4</version>
+			<version>8.0.20</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.7</version>
+			<version>2.8.6</version>
 		</dependency>
 		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
-			<version>1.4.01</version>
+			<version>2.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-catalina</artifactId>
-			<version>8.0.37</version>
+			<version>9.0.33</version>
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
@@ -111,12 +111,12 @@
 				it.bncf.magazziniDigitali.businessLogic.utils
 			</groupId>
 			<artifactId>MagazziniDigitaliBusinessLogicUtils</artifactId>
-			<version>2.0.25</version>
+			<version>3.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>it.bncf.magazziniDigitali.services.client</groupId>
 			<artifactId>MagazziniDigitaliServicesClient</artifactId>
-			<version>2.0.20</version>
+			<version>3.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>
@@ -125,8 +125,9 @@
 			<artifactId>
 				MagazziniDigitaliVerificaPreRegistrazione
 			</artifactId>
-			<version>2.0.10</version>
+			<version>3.0.0</version>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -153,7 +154,7 @@
         <artifactId>slf4j-log4j12</artifactId>
         <version>1.7.5</version>
     </dependency>
-		
+		-->
 	</dependencies>
 	<build>
 		<finalName>MagazziniDigitaliGestionale##${project.version}</finalName>
@@ -367,7 +368,7 @@
 	<parent>
 		<groupId>it.depositolegale.gestionale</groupId>
 		<artifactId>MagazziniDigitaliGestionale_2.0</artifactId>
-		<version>2.0.0</version>
+		<version>3.0.0</version>
 	</parent>
-	<version>2.0.31</version>
+	<version>3.0.0</version>
 </project>

@@ -16,7 +16,8 @@ import java.util.UUID;
 import javax.mail.MessagingException;
 import javax.naming.NamingException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
@@ -57,7 +58,7 @@ import mx.randalf.xsd.exception.XsdException;
  */
 public class ValidatePreIscrizione extends SendEmail {
 
-	private Logger log = Logger.getLogger(ValidatePreIscrizione.class);
+	private Logger log = LogManager.getLogger(ValidatePreIscrizione.class);
 
 	private String checkId = null;
 

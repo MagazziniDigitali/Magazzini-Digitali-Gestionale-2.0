@@ -9,7 +9,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
@@ -28,7 +29,7 @@ import mx.randalf.xsd.exception.XsdException;
 
 public class TabRigths extends BasicTabServlet<MDRigthsBusiness, MDRigths> {
 
-	private Logger log = Logger.getLogger(TabRigths.class);
+	private Logger log = LogManager.getLogger(TabRigths.class);
 
 	/**
 	 * 

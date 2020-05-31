@@ -12,7 +12,8 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -38,7 +39,7 @@ import mx.randalf.hibernate.exception.HibernateUtilException;
  */
 public class ReadGoogle {
 
-	private Logger log = Logger.getLogger(ReadGoogle.class);
+	private Logger log = LogManager.getLogger(ReadGoogle.class);
 
 	/** Application name. */
 	private static final String APPLICATION_NAME = "Google Sheets API Java Quickstart";

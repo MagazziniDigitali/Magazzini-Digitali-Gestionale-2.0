@@ -8,7 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -32,7 +33,7 @@ public class HomeDetailAction extends LoginAction {
 
 	private static String HOMEDETAIL="homeDetail";
 
-	private Logger log = Logger.getLogger(HomeDetailAction.class);
+	private Logger log = LogManager.getLogger(HomeDetailAction.class);
 
 	private String idMdFilesTmp = null;
 

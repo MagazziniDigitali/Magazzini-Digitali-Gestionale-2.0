@@ -9,7 +9,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
@@ -33,7 +34,7 @@ public class TabUtenti extends BasicTabServlet<MDUtentiBusiness, MDUtenti> {
 
 	private boolean createPremis = false;
 
-	private static Logger log = Logger.getLogger(TabUtenti.class);
+	private static Logger log = LogManager.getLogger(TabUtenti.class);
 
 	/**
 	 * 

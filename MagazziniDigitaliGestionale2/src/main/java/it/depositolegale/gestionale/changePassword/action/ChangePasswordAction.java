@@ -5,7 +5,8 @@ package it.depositolegale.gestionale.changePassword.action;
 
 import java.security.NoSuchAlgorithmException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import it.bncf.magazziniDigitali.database.dao.MDUtentiDAO;
@@ -25,7 +26,7 @@ public class ChangePasswordAction extends LoginAction {
 	 */
 	private static final long serialVersionUID = -4679026894073510080L;
 
-	private Logger log = Logger.getLogger(ChangePasswordAction.class);
+	private Logger log = LogManager.getLogger(ChangePasswordAction.class);
 
 	private String CHANGEPASSWORD = "changePassword";
 

@@ -4,7 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -24,7 +25,7 @@ import mx.randalf.hibernate.exception.HibernateUtilException;
 
 public class TabHome extends BasicTabServlet<MDFilesTmpBusiness, MDFileTmpTab> {
 
-	private Logger log = Logger.getLogger(TabHome.class);
+	private Logger log = LogManager.getLogger(TabHome.class);
 
 	/**
 	 * 

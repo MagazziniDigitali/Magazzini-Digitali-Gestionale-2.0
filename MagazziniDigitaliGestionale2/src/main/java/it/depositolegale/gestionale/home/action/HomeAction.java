@@ -9,7 +9,8 @@ import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.HibernateException;
 import org.hibernate.criterion.Order;
@@ -40,7 +41,7 @@ public class HomeAction extends LoginAction {
 	 */
 	private static final long serialVersionUID = 4694613504321042884L;
 
-	private Logger log = Logger.getLogger(HomeAction.class);
+	private Logger log = LogManager.getLogger(HomeAction.class);
 
 	private TreeMap<String, Long> cruscotto = null;
 
