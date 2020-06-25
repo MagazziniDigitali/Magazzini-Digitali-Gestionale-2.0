@@ -213,10 +213,11 @@ public class ReadGoogle {
 			// https://docs.google.com/spreadsheets/d/1j_kfgIqVGg1Luvb7nXuBs-KOveF1wmSBImoSG5mSLf4/edit#gid=1121719036
 			// spreadsheetId = "1tlNppLw7686Z5ybbgTM7aO0c6xGrFhQZP-_1X_ICZA4";
 			// spreadsheetId = "1j_kfgIqVGg1Luvb7nXuBs-KOveF1wmSBImoSG5mSLf4";
+			// Coll: https://docs.google.com/spreadsheets/d/1eY65s2A38GBC9-HpgPbaBNtWtI-eaG3jOWL9n88_ZP4/edit#gid=1554018670
 
 			// chiave utilizzata per il calcolo delle informazioni
 			// range = "'Risposte del modulo 1'!A"+nRow+":V"+nRow;
-			range = (page == null || page.trim().equals("") ? "" : page + "!") + "A" + nRow + ":V" + nRow;
+			range = (page == null || page.trim().equals("") ? "" : page + "!") + "A" + nRow + ":Z" + nRow;
 
 			response = service.spreadsheets().values().get(spreadsheetId, range).execute();
 			rows = response.getValues();
