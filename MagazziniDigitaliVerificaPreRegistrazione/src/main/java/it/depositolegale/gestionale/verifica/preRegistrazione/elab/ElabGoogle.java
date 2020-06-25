@@ -67,18 +67,26 @@ public class ElabGoogle extends SendEmail{
 
 	private int TESI_DOTTORATO = 15; // Tesi di dottorato
 
-	private int RIVISTE_APERTE = 16; // Riviste ad accesso Aperto
+	private int TESI_DOTTORATO_URL = 16; // Tesi di dottorato
 
-	private int RIVISTE_RISTRETTE = 17; // Riviste ad accesso Ristretto
+	private int RIVISTE_APERTE = 17; // Riviste ad accesso Aperto
 
-	private int EBOOK_APERTE = 18; // Ebook accesso Aperto
+	private int RIVISTE_APERTE_URL = 18; // Riviste ad accesso Aperto
 
-	private int EBOOK_RISTRETTE = 19; // Ebook accesso Ristretto
+	private int RIVISTE_RISTRETTE = 19; // Riviste ad accesso Ristretto
 
-	private int ALTRO = 20; // Altro (si prega di specificare)
+	private int RIVISTE_RISTRETTE_URL = 20; // Riviste ad accesso Ristretto
 
-	private int AUTORIZZAZIONE_TRAT = 21; // Autorizzazione al trattamento dei dati personali (in assenza dell'autorizzazione al trattamento non sarà possibile effettuare il deposito) 
+	private int EBOOK_APERTE = 21; // Ebook accesso Aperto
 
+	private int EBOOK_RISTRETTE = 22; // Ebook accesso Ristretto
+
+	private int NBN = 23; // Ebook accesso Ristretto
+
+	private int ALTRO = 24; // Altro (si prega di specificare)
+
+	private int AUTORIZZAZIONE_TRAT = 25; // Autorizzazione al trattamento dei dati personali (in assenza dell'autorizzazione al trattamento non sarà possibile effettuare il deposito) 
+	
 	private List<Object> row = null;
 
 	private Integer progressivo = 0;

@@ -125,7 +125,7 @@
 			<artifactId>
 				MagazziniDigitaliVerificaPreRegistrazione
 			</artifactId>
-			<version>3.0.0</version>
+			<version>3.0.1</version>
 		</dependency>
 		<!-- 
 		<dependency>
@@ -370,5 +370,5 @@
 		<artifactId>MagazziniDigitaliGestionale_2.0</artifactId>
 		<version>3.0.0</version>
 	</parent>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 </project>
