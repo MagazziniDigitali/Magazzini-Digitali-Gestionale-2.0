@@ -5,26 +5,26 @@
 	$(document).ready(function() {
 		$('#ModalitaAccessoTableContainer').jtable({
 			title : '<s:text name="modalitaAccesso.table.title" />',
-            paging: true, //Enable paging
-//            pageSize: 3, Set page size (default: 10)           
-            columnResizable: true, //Actually, no need to set true since it's default
-            columnSelectable: true, //Actually, no need to set true since it's default
-            saveUserPreferences: true, //Actually, no need to set true since it's default
-            sorting: true,
-            class: "tabModalitaAccesso",
-            defaultSorting: 'descrizione ASC',
-            actions: {
-                listAction: 'TabModalitaAccesso?action=list',
-//                createAction:'TabModalitaAccesso?action=create',
-//                updateAction: 'TabModalitaAccesso?action=update'
+      paging: true, //Enable paging
+//      pageSize: 3, Set page size (default: 10)           
+      columnResizable: true, //Actually, no need to set true since it's default
+      columnSelectable: true, //Actually, no need to set true since it's default
+      saveUserPreferences: true, //Actually, no need to set true since it's default
+      sorting: true,
+      class: "tabModalitaAccesso",
+      defaultSorting: 'descrizione ASC',
+      actions: {
+        listAction: 'TabModalitaAccesso?action=list',
+        createAction:'TabModalitaAccesso?action=create',
+        updateAction: 'TabModalitaAccesso?action=update'
 //                ,deleteAction: 'TabModalitaAccesso?action=delete'
-            },
+        },
 			options: {
-		        sorting: false,
-		        defaultSorting: ''
+		    sorting: false,
+		    defaultSorting: ''
 		    },
     
-            fields : {
+      fields : {
 				id : {
 					title : '<s:text name="modalitaAccesso.table.id" />',
 					sort :true,

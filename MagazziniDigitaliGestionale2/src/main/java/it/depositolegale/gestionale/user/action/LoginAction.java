@@ -248,15 +248,53 @@ public class LoginAction extends ActionSupport {
 
 	public Boolean showMenuAdmin(){
 		Boolean result = false;
-//		Map<String, Object> session = ActionContext.getContext().getSession();
-		if (amministratore.trim().equals("1") &&
-				idIstituto==null){
-//		if (session.get("loginedAdmin") != null &&
-//				session.get("loginedAdmin").equals("true")){
+		if (amministratore.trim().equals("1")){
 			result = true;
 		}
 		return result;
 	}
+
+  public Boolean showMenuDepositanti(){
+    return showMenuIstituti(0);
+  }
+
+  public Boolean showMenuBiblioteche(){
+    return showMenuIstituti(1);
+  }
+
+  public Boolean showMenuIstituti(int bibliotecaDepositaria){
+    Boolean result = false;
+    MDIstituzioneDAO mdIstituzioneDAO = null;
+    MDIstituzione mdIstituzione = null;
+
+    try {
+      if (amministratore.trim().equals("1") &&
+          idIstituto==null){
+        result = true;
+      } else if (idIstituto!=null){
+        mdIstituzioneDAO = new MDIstituzioneDAO();
+        mdIstituzione = mdIstituzioneDAO.findById(idIstituto);
+        if (mdIstituzione != null &&
+            mdIstituzione.getBibliotecaDepositaria()==bibliotecaDepositaria) {
+          result = true;
+        }
+      }
+    } catch (HibernateException e) {
+      e.printStackTrace();
+    } catch (HibernateUtilException e) {
+      e.printStackTrace();
+    }
+    return result;
+  }
+
+  public Boolean showMenuAdminMD(){
+    Boolean result = false;
+    if (amministratore.trim().equals("1") &&
+        idIstituto==null){
+      result = true;
+    }
+    return result;
+  }
 
 	public Boolean showMenuSuperAdmin(){
 		Boolean result = false;

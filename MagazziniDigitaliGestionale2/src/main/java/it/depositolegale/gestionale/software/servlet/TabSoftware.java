@@ -13,6 +13,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
+import com.opensymphony.xwork2.ActionContext;
+
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
 import it.bncf.magazziniDigitali.businessLogic.exception.BusinessLogicException;
 import it.bncf.magazziniDigitali.businessLogic.oggettoDigitale.implement.OggettoDigitale;
@@ -37,6 +39,8 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 
 	private static Logger log = LogManager.getLogger(TabSoftware.class);
 	
+	private String idConfigDefaults = null;
+	
 	/**
 	 * 
 	 */
@@ -56,14 +60,29 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 	protected HashTable<String, Object> searchList(HttpServletRequest request) {
 		HashTable<String, Object> dati = null;
 		String searchname = null;
+		MDIstituzioneDAO mdIstituzioneDAO = null;
+    MDIstituzione mdIstituzione = null;
 
-		searchname = request.getParameter("searchname");
+		try {
+      searchname = request.getParameter("searchname");
 
-		dati = new HashTable<String, Object>();
-		if (searchname != null &&
-				!searchname.trim().equals("")){
-			dati.put("nome", searchname.trim());
-		}
+      dati = new HashTable<String, Object>();
+      if (searchname != null &&
+      		!searchname.trim().equals("")){
+      	dati.put("nome", searchname.trim());
+      }
+      
+      if (ActionContext.getContext().getSession().get("idIstituto")!=null){
+        mdIstituzioneDAO = new MDIstituzioneDAO();
+        mdIstituzione = mdIstituzioneDAO.findById((String) ActionContext.getContext().getSession().get("idIstituto"));
+        dati.put("idIstituzione", mdIstituzione);
+      }
+    } catch (HibernateException e) {
+      e.printStackTrace();
+    } catch (HibernateUtilException e) {
+      e.printStackTrace();
+    }
+
 		return dati;
 	}
 
@@ -71,7 +90,13 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 	protected HashTable<String, Object> campiUpdate(HttpServletRequest request) throws HibernateException, HibernateUtilException {
 		HashTable<String, Object> dati = null;
 		MDIstituzioneDAO mdIstituzioneDAO = null;
+    MDIstituzione mdIstituzione = null;
 		MDRigthsDAO mdRigthsDAO = null;
+
+    mdIstituzioneDAO = new MDIstituzioneDAO();
+    if (ActionContext.getContext().getSession().get("idIstituto")!=null){
+      mdIstituzione = mdIstituzioneDAO.findById((String) ActionContext.getContext().getSession().get("idIstituto"));
+    }
 
 		dati = new HashTable<String, Object>();
 
@@ -95,14 +120,17 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 			dati.put("ipAutorizzati", request.getParameter("ipAutorizzati"));
 		}
 
-		if (request.getParameter("bibliotecaDepositaria") != null) {
+		if ( mdIstituzione != null) {
+		  dati.put("bibliotecaDepositaria", mdIstituzione.getBibliotecaDepositaria());
+		} else if (request.getParameter("bibliotecaDepositaria") != null) {
 			dati.put("bibliotecaDepositaria", new Integer(request.getParameter("bibliotecaDepositaria")));
 		}else {
 			dati.put("bibliotecaDepositaria", 0);
 		}
 
-		if (request.getParameter("idIstituzioneID") != null) {
-			mdIstituzioneDAO = new MDIstituzioneDAO();
+    if ( mdIstituzione != null) {
+      dati.put("idIstituzione", mdIstituzione);
+    } else if (request.getParameter("idIstituzioneID") != null) {
 			dati.put("idIstituzione", mdIstituzioneDAO.findById(request.getParameter("idIstituzioneID")));
 		}
 
@@ -142,8 +170,29 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 		MDSoftware mdSoftware = null;
 		super.checkPreUpdate(business, request);
 		String value = null;
+		String error = "";
 		
 		try {
+      if (request.getParameter("nome") == null ||
+          request.getParameter("nome").trim().equals("")){
+        error = "Il campo nome è obbligatorio";
+      }
+      if (request.getParameter("login") == null ||
+          request.getParameter("login").trim().equals("")){
+        error += (error.equals("")?"":"\n")+"Il login nome è obbligatorio";
+      }
+      if (request.getParameter("password") == null ||
+          request.getParameter("password").trim().equals("")){
+        error += (error.equals("")?"":"\n")+"Il password nome è obbligatorio";
+      }
+      if (request.getParameter("ipAutorizzati") == null ||
+          request.getParameter("ipAutorizzati").trim().equals("")){
+        error += (error.equals("")?"":"\n")+"Il ip Autorizzati nome è obbligatorio";
+      }
+		  
+      if (error!= null && !error.trim().equals("")) {
+        throw new BusinessLogicException(error);
+      }
 			if (request.getParameter("id") != null &&
 					!request.getParameter("id").trim().equals("")){
 				mdSoftware = business.findById(request.getParameter("id"));
@@ -205,6 +254,12 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 				}
 			} else {
 				createPremis=true;
+				
+	      if (request.getParameter("idConfigDefaults") != null &&
+          !request.getParameter("idConfigDefaults").trim().equals("")){
+	        idConfigDefaults = request.getParameter("idConfigDefaults").trim();
+	      }
+
 			}
 		} catch (HibernateException e) {
 			throw e;
@@ -219,10 +274,15 @@ public class TabSoftware extends BasicTabServlet<MDSoftwareBusiness, MDSoftware>
 	 */
 	@Override
 	protected void postUpdate(String id, HashTable<String, Object> dati) 
-			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
-
+			throws BusinessLogicException, MDConfigurationException, PremisXsdException, XsdException, IOException {
 		super.postUpdate(id, dati);
 		createFilePremis(id, dati, createPremis);
+
+		if (idConfigDefaults != null &&
+		    !idConfigDefaults.trim().equals("")) {
+		  MDSoftwareBusiness.createSoftwareConfig(id, idConfigDefaults);
+		}
+		
 	}
 	
 	public static void createFilePremis(String id, HashTable<String, Object> dati, boolean createPremis)

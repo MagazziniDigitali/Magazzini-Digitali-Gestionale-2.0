@@ -365,9 +365,7 @@ public abstract class BasicTabServlet<B extends BusinessLogic<?, ?, ?>, T extend
 	protected abstract String resultOptions(List<T> list);
 
 	protected void postUpdate(String id, HashTable<String, Object> dati)
-			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
-		// TODO Auto-generated method stub
-		
+			throws BusinessLogicException, MDConfigurationException, PremisXsdException, XsdException, IOException {
 	}
 
 	protected String escape(String value){

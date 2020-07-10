@@ -110,13 +110,16 @@ public class TabNodi extends BasicTabServlet<MDNodiBusiness, MDNodi> {
 			}
 		}
 
-
 		if (request.getParameter("active") != null) {
 			dati.put("active", new Integer(request.getParameter("active")));
 		} else {
 			dati.put("active", 0);
 		}
 
+    if (request.getParameter("code") != null) {
+      dati.put("code", request.getParameter("code"));
+    }
+		
 		return dati;
 	}
 

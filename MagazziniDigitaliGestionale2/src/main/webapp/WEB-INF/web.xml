@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>Magazzini Digitali 2 - Gestionale</display-name>
+  <display-name>Magazzini Digitali 3 - Gestionale</display-name>
   <distributable/>
 
   <session-config>
@@ -31,6 +31,14 @@
   <servlet>
     <servlet-name>TabRigths</servlet-name>
     <servlet-class>it.depositolegale.gestionale.rigths.servlet.TabRigths</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TabConfigDefaults</servlet-name>
+    <servlet-class>it.depositolegale.gestionale.configDefaults.servlet.TabConfigDefaults</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TabConfigDefaultsRow</servlet-name>
+    <servlet-class>it.depositolegale.gestionale.configDefaults.servlet.TabConfigDefaultsRow</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>TabSoftware</servlet-name>
@@ -84,6 +92,14 @@
   <servlet-mapping>
     <servlet-name>TabRigths</servlet-name>
     <url-pattern>/TabRigths</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TabConfigDefaults</servlet-name>
+    <url-pattern>/TabConfigDefaults</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TabConfigDefaultsRow</servlet-name>
+    <url-pattern>/TabConfigDefaultsRow</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>TabSoftware</servlet-name>

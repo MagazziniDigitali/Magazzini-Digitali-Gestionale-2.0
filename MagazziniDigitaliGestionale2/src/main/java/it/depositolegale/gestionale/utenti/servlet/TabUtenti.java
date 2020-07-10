@@ -13,6 +13,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
+import com.opensymphony.xwork2.ActionContext;
+
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
 import it.bncf.magazziniDigitali.businessLogic.exception.BusinessLogicException;
 import it.bncf.magazziniDigitali.businessLogic.oggettoDigitale.implement.OggettoDigitale;
@@ -53,19 +55,35 @@ public class TabUtenti extends BasicTabServlet<MDUtentiBusiness, MDUtenti> {
 	protected HashTable<String, Object> searchList(HttpServletRequest request) {
 		HashTable<String, Object> dati = null;
 		String searchname = null;
+		MDIstituzioneDAO mdIstituzioneDAO = null;
+    MDIstituzione mdIstituzione = null;
 
-		searchname = request.getParameter("searchname");
+		try {
+      searchname = request.getParameter("searchname");
 
-		dati = new HashTable<String, Object>();
-		if (searchname != null && !searchname.trim().equals("")) {
-			dati.put("nome", searchname.trim());
-		}
+      dati = new HashTable<String, Object>();
+      if (searchname != null && !searchname.trim().equals("")) {
+      	dati.put("nome", searchname.trim());
+      }
 
-		searchname = request.getParameter("searchcogname");
+      searchname = request.getParameter("searchcogname");
 
-		if (searchname != null && !searchname.trim().equals("")) {
-			dati.put("cognome", searchname.trim());
-		}
+      if (searchname != null && !searchname.trim().equals("")) {
+      	dati.put("cognome", searchname.trim());
+      }
+
+      
+      if (ActionContext.getContext().getSession().get("idIstituto")!=null){
+        mdIstituzioneDAO = new MDIstituzioneDAO();
+        mdIstituzione = mdIstituzioneDAO.findById((String) ActionContext.getContext().getSession().get("idIstituto"));
+        dati.put("idIstituzione", mdIstituzione);
+      }
+    } catch (HibernateException e) {
+      e.printStackTrace();
+    } catch (HibernateUtilException e) {
+      e.printStackTrace();
+    }
+		
 		return dati;
 	}
 
@@ -221,7 +239,7 @@ public class TabUtenti extends BasicTabServlet<MDUtentiBusiness, MDUtenti> {
 	 */
 	@Override
 	protected void postUpdate(String id, HashTable<String, Object> dati) 
-			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
+			throws BusinessLogicException, MDConfigurationException, PremisXsdException, XsdException, IOException {
 
 		super.postUpdate(id, dati);
 		createFilePremis(id, dati, createPremis);

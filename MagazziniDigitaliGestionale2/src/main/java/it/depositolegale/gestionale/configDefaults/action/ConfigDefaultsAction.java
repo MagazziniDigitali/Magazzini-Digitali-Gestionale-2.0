@@ -1,9 +1,7 @@
 /**
  * 
  */
-package it.depositolegale.gestionale.istituti.action;
-
-import com.opensymphony.xwork2.ActionContext;
+package it.depositolegale.gestionale.configDefaults.action;
 
 import it.depositolegale.gestionale.user.action.LoginAction;
 
@@ -11,12 +9,12 @@ import it.depositolegale.gestionale.user.action.LoginAction;
  * @author massi
  *
  */
-public class IstitutiAction extends LoginAction {
+public class ConfigDefaultsAction extends LoginAction {
 
 	/**
 	 * Utilizzato per la indicare le pagine di Login
 	 */
-	public static String ISTITUTI = "istituti";
+	public static String CONFIGDEFAULTS = "configDefaults";
 
 	
 	/**
@@ -27,7 +25,7 @@ public class IstitutiAction extends LoginAction {
 	/**
 	 * 
 	 */
-	public IstitutiAction() {
+	public ConfigDefaultsAction() {
     }
 	
 	@Override
@@ -37,20 +35,8 @@ public class IstitutiAction extends LoginAction {
 		result = super.execute();
 		
 		if (result.equals(HOME)){
-			result = ISTITUTI;
+			result = CONFIGDEFAULTS;
 		}
 		return result;
 	}
-	
-
-  public String getIsMD(){
-    String result ="No";
-
-    if (ActionContext.getContext().getSession().get("idIstituto")==null){
-      result="Si";
-    }
-      
-    return result;
-  }
-
 }

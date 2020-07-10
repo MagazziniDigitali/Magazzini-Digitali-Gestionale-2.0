@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
+import it.bncf.magazziniDigitali.businessLogic.exception.BusinessLogicException;
 import it.bncf.magazziniDigitali.businessLogic.oggettoDigitale.implement.OggettoDigitale;
 import it.bncf.magazziniDigitali.businessLogic.rigths.MDRigthsBusiness;
 import it.bncf.magazziniDigitali.configuration.exception.MDConfigurationException;
@@ -104,7 +105,7 @@ public class TabRigths extends BasicTabServlet<MDRigthsBusiness, MDRigths> {
 	 */
 	@Override
 	protected void postUpdate(String id, HashTable<String, Object> dati) 
-			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
+			throws BusinessLogicException, MDConfigurationException, PremisXsdException, XsdException, IOException {
 		RightsXsd<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> rightsXsd = null;
 		File filePremis = null;
 		GregorianCalendar gc = new GregorianCalendar();

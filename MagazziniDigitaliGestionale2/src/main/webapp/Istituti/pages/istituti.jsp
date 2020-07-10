@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<s:set name="isMD" value="isMD"/>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#IstitutiTableContainer').jtable({
@@ -15,7 +16,9 @@
             defaultSorting: 'nome ASC',
             actions: {
                 listAction: 'TabIstituti?action=list&bibliotecaDepositaria=0',
+                <s:if test="%{#isMD=='Si'}">
                 createAction:'TabIstituti?action=create&bibliotecaDepositaria=0',
+                </s:if>
                 updateAction: 'TabIstituti?action=update&bibliotecaDepositaria=0'
 //                ,deleteAction: 'TabIstituti?action=delete'
             },

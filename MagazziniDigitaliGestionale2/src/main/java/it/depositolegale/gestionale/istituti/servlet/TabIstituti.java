@@ -13,6 +13,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
+import com.opensymphony.xwork2.ActionContext;
+
 import it.bncf.magazziniDigitali.businessLogic.HashTable;
 import it.bncf.magazziniDigitali.businessLogic.exception.BusinessLogicException;
 import it.bncf.magazziniDigitali.businessLogic.istituzione.MDIstituzioneBusiness;
@@ -70,6 +72,11 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 				!searchname.trim().equals("undefined")){
 			dati.put("bibliotecaDepositaria", Integer.parseInt(searchname.trim()));
 		}
+		
+    if (ActionContext.getContext().getSession().get("idIstituto")!=null){
+      dati.put("id", (String) ActionContext.getContext().getSession().get("idIstituto"));
+    }
+		
 		return dati;
 	}
 
@@ -290,7 +297,7 @@ public class TabIstituti extends BasicTabServlet<MDIstituzioneBusiness, MDIstitu
 	 */
 	@Override
 	protected void postUpdate(String id, HashTable<String, Object> dati) 
-			throws MDConfigurationException, PremisXsdException, XsdException, IOException {
+			throws BusinessLogicException, MDConfigurationException, PremisXsdException, XsdException, IOException {
 		super.postUpdate(id, dati);
 		createFilePremis(id, dati, createPremis);
 	}

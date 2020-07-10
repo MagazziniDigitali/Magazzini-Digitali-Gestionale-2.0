@@ -8,7 +8,7 @@
 	<constant name="struts.i18n.reload" value="false" />
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.action.excludePattern"
-		value="/TabHome,/TabHomeDetail,/TabIstituti,/TabUtenti,/TabPreRegistrazione,/TabRigths,/TabSoftware,/TabSoftwareConfig,/TabEvent,/TabNodi,/TabCompositionLevel,/TabModalitaAccesso,/TabRegioni" />
+		value="/TabHome,/TabHomeDetail,/TabIstituti,/TabUtenti,/TabPreRegistrazione,/TabRigths,/TabConfigDefaults,/TabConfigDefaultsRow,/TabSoftware,/TabSoftwareConfig,/TabEvent,/TabNodi,/TabCompositionLevel,/TabModalitaAccesso,/TabRegioni" />
 	<package name="user" namespace="/" extends="struts-default">
 		<result-types>
 			<result-type name="tiles"
@@ -94,6 +94,20 @@
 			<result name="error" type="tiles">error</result>
 			<result name="rigths" type="tiles">rigths</result>
 		</action>
+		<action name="ConfigDefaults" 
+		  class="it.depositolegale.gestionale.configDefaults.action.ConfigDefaultsAction">
+      <result name="login" type="tiles">login</result>
+      <result name="confirm" type="tiles">confirm</result>
+      <result name="error" type="tiles">error</result>
+      <result name="configDefaults" type="tiles">configDefaults</result>
+		</action>
+    <action name="ConfigDefaultsRow" 
+      class="it.depositolegale.gestionale.configDefaults.action.ConfigDefaultsRowAction">
+      <result name="login" type="tiles">login</result>
+      <result name="confirm" type="tiles">confirm</result>
+      <result name="error" type="tiles">error</result>
+      <result name="configDefaultsRow" type="tiles">configDefaultsRow</result>
+    </action>
 		<action name="Software"
 			class="it.depositolegale.gestionale.software.action.SoftwareAction">
 			<result name="login" type="tiles">login</result>

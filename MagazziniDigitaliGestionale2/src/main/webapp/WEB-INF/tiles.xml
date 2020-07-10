@@ -78,6 +78,16 @@
       <put-attribute name="body"   value="/Rigths/pages/rigths.jsp"/>      
   </definition>
   
+  <definition name="configDefaults" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Configurazione Software di Default"/>
+      <put-attribute name="body"   value="/ConfigDefaults/pages/configDefaults.jsp"/>      
+  </definition>
+  
+  <definition name="configDefaultsRow" extends="baseLayout">
+      <put-attribute name="title"  value="Gestione Configurazione Software di Default Righe"/>
+      <put-attribute name="body"   value="/ConfigDefaults/pages/configDefaultsRow.jsp"/>      
+  </definition>
+  
   <definition name="software" extends="baseLayout">
       <put-attribute name="title"  value="Gestione Software"/>
       <put-attribute name="body"   value="/Software/pages/software.jsp"/>      

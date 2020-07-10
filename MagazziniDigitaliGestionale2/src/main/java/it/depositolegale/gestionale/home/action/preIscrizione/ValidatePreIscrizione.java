@@ -675,7 +675,7 @@ public class ValidatePreIscrizione extends SendEmail {
 
 		try {
 			mdSoftwareDAO = new MDSoftwareDAO();
-			mdSoftwares = mdSoftwareDAO.find(null, id, null);
+			mdSoftwares = mdSoftwareDAO.find(null, id, null, null);
 			for (int x = 0; x < mdSoftwares.size(); x++) {
 				if (mdSoftwares.get(x).getLogin().equals(id)) {
 					mdSoftware = mdSoftwares.get(x);
