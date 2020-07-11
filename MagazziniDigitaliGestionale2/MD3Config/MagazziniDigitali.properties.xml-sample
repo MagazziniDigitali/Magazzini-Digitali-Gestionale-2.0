@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+    <comment>Fie di configurazione del progetto MD Versione 3.x.x</comment>
+
+    <!-- URL da contattare per poter fare l'autenticazione del Software -->
+    <entry key="software.URLAuthentication">http://localhost:8080/MagazziniDigitaliServices/services/AuthenticationSoftwarePort?wsdl</entry>
+
+    <!-- Configurazione Software Interfaccia Api -->
+    <entry key="software.GS.login">GS_MD</entry>
+    <entry key="software.GS.password">m@9@221n1</entry>
+
+    <!-- URL da contattare per poter fare l'autenticazione degli utenti -->
+    <entry key="utenti.URLAuthentication">http://localhost:8080/MagazziniDigitaliServices/services/AuthenticationUtentiPort?wsdl</entry>
+
+    <!-- Url relativa al server Rsync pubblicato -->
+    <entry key="url.Rsync">md.svil.bncf.lan</entry>
+
+    <!-- Url relativa al server Service/API di MD -->
+    <entry key="url.Services">http://md.svil.bncf.lan:8080</entry>
+
+    <!-- Url relativa al server Service/API di MD -->
+    <entry key="url.Gestionale">http://localhost:8080</entry>
+</properties>
