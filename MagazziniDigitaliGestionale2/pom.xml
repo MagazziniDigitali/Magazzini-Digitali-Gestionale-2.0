@@ -170,7 +170,7 @@
 					<source>1.8</source>
 					<target>1.8</target>
 
-					<webResources>
+					<!--  webResources>
 						<resource>
 							<directory>src/main/config/${myAction}</directory>
 							<targetPath>WEB-INF/</targetPath>
@@ -178,7 +178,7 @@
 								<include>jdbc.properties</include>
 							</includes>
 						</resource>
-					</webResources>
+					</webResources -->
 				</configuration>
 				<executions>
 					<execution>
