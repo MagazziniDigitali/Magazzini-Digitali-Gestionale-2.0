@@ -4,21 +4,21 @@
     <comment>Fie di configurazione del progetto MD Versione 3.x.x</comment>
 
     <!-- URL da contattare per poter fare l'autenticazione del Software -->
-    <entry key="software.URLAuthentication">http://localhost:8080/MagazziniDigitaliServices/services/AuthenticationSoftwarePort?wsdl</entry>
+    <entry key="software.URLAuthentication">http://<URL Servizi>/MagazziniDigitaliServices/services/AuthenticationSoftwarePort?wsdl</entry>
 
     <!-- Configurazione credenziali per l'interfaccia Gestionale -->
-    <entry key="software.GS.login">GS_MD</entry>
-    <entry key="software.GS.password">m@9@221n1</entry>
+    <entry key="software.GS.login"><Login Software Gestionale></entry>
+    <entry key="software.GS.password"><Password Software Gestionale></entry>
 
     <!-- URL da contattare per poter fare l'autenticazione degli utenti -->
-    <entry key="utenti.URLAuthentication">http://localhost:8080/MagazziniDigitaliServices/services/AuthenticationUtentiPort?wsdl</entry>
+    <entry key="utenti.URLAuthentication">http://<URL Servizi>/MagazziniDigitaliServices/services/AuthenticationUtentiPort?wsdl</entry>
 
     <!-- Url relativa al server Rsync pubblicato -->
-    <entry key="url.Rsync">md.svil.bncf.lan</entry>
+    <entry key="url.Rsync"><URL Rsync></entry>
 
     <!-- Url relativa al server Service/API di MD -->
-    <entry key="url.Services">http://md.svil.bncf.lan:8080</entry>
+    <entry key="url.Services">http://<URL Servizi></entry>
 
     <!-- Url relativa al server Service/API di MD -->
-    <entry key="url.Gestionale">http://localhost:8080</entry>
+    <entry key="url.Gestionale">http://<URL Gestionale></entry>
 </properties>
