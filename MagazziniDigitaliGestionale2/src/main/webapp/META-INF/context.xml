@@ -2,5 +2,5 @@
 <Context path="/MagazziniDigitaliGestionale" crossContext="true" debug="0" reloadable="true">
     <Parameter 
       name="nomeCatalogo" 
-      value="MDConfig|file:////Users/massi/Desktop/Lavoro/Sorgenti/Bncf/MagazziniDigitaliGestionale_2.0/MagazziniDigitaliGestionale2/MD3Config/svil"/>
+      value="MD3Config|file:////Users/massi/Desktop/Lavoro/Sorgenti/Bncf/MagazziniDigitaliGestionale_2.0/MagazziniDigitaliGestionale2/MD3Config/svil"/>
 </Context>
