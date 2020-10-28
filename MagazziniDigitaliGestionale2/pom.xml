@@ -109,12 +109,12 @@
 				it.bncf.magazziniDigitali.businessLogic.utils
 			</groupId>
 			<artifactId>MagazziniDigitaliBusinessLogicUtils</artifactId>
-			<version>3.0.2</version>
+			<version>3.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>it.bncf.magazziniDigitali.services.client</groupId>
 			<artifactId>MagazziniDigitaliServicesClient</artifactId>
-			<version>3.0.2</version>
+			<version>3.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>
@@ -123,7 +123,7 @@
 			<artifactId>
 				MagazziniDigitaliVerificaPreRegistrazione
 			</artifactId>
-			<version>3.0.1</version>
+			<version>3.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -341,5 +341,5 @@
 		<artifactId>MagazziniDigitaliGestionale_2.0</artifactId>
 		<version>3.0.0</version>
 	</parent>
-	<version>3.0.1</version>
+	<version>3.0.2</version>
 </project>
