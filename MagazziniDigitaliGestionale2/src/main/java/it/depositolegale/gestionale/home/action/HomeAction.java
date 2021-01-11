@@ -34,7 +34,7 @@ import mx.randalf.hibernate.exception.HibernateUtilException;
  * @author massi
  *
  */
-public class HomeAction extends LoginAction {
+public class HomeAction extends HomeMemCached {
 
 	/**
 	 * 
@@ -147,6 +147,8 @@ public class HomeAction extends LoginAction {
 					addActionError(getText("authentication.faild"));
 					result = LOGIN;
 				}
+			} else if (sid != null) {
+				result = readMemCached(sid, result);
 			}
 		}
 		if (result.equals(HOME)){

@@ -109,12 +109,12 @@
 				it.bncf.magazziniDigitali.businessLogic.utils
 			</groupId>
 			<artifactId>MagazziniDigitaliBusinessLogicUtils</artifactId>
-			<version>3.0.3</version>
+			<version>3.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>it.bncf.magazziniDigitali.services.client</groupId>
 			<artifactId>MagazziniDigitaliServicesClient</artifactId>
-			<version>3.0.4</version>
+			<version>3.0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>
@@ -123,7 +123,7 @@
 			<artifactId>
 				MagazziniDigitaliVerificaPreRegistrazione
 			</artifactId>
-			<version>3.0.2</version>
+			<version>3.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -156,6 +156,12 @@
 
 		<!-- <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> 
 			<version>1.2.17</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/net.spy/spymemcached -->
+		<dependency>
+			<groupId>net.spy</groupId>
+			<artifactId>spymemcached</artifactId>
+			<version>2.12.3</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>MagazziniDigitaliGestionale##${project.version}</finalName>
@@ -170,15 +176,9 @@
 					<source>1.8</source>
 					<target>1.8</target>
 
-					<!--  webResources>
-						<resource>
-							<directory>src/main/config/${myAction}</directory>
-							<targetPath>WEB-INF/</targetPath>
-							<includes>
-								<include>jdbc.properties</include>
-							</includes>
-						</resource>
-					</webResources -->
+					<!-- webResources> <resource> <directory>src/main/config/${myAction}</directory> 
+						<targetPath>WEB-INF/</targetPath> <includes> <include>jdbc.properties</include> 
+						</includes> </resource> </webResources -->
 				</configuration>
 				<executions>
 					<execution>
@@ -341,5 +341,5 @@
 		<artifactId>MagazziniDigitaliGestionale_2.0</artifactId>
 		<version>3.0.0</version>
 	</parent>
-	<version>3.0.2</version>
+	<version>3.0.3</version>
 </project>

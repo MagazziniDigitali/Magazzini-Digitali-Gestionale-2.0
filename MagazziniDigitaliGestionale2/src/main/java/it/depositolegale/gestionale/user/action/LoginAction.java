@@ -55,6 +55,8 @@ public class LoginAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 4694613504321042884L;
 
+	protected String sid = null;
+	
 	/**
 	 * Indica l'utente identificato oppure richiesto di essere autenticato
 	 */
@@ -124,8 +126,19 @@ public class LoginAction extends ActionSupport {
 			session = ActionContext.getContext().getSession();
 			if (session.get("logined") != null &&
 					session.get("logined").equals("true")){
-				readSession(session);
-				return HOME;
+				if (sid != null) {
+					if (session.get("sid") != null &&
+						session.get("sid").equals(sid)) {
+						readSession(session);
+						return HOME;
+					} else {
+						deleteSession();
+						return LOGIN;
+					}
+				} else {
+					readSession(session);
+					return HOME;
+				}
 			} else {
 				return LOGIN;
 			}
@@ -155,6 +168,10 @@ public class LoginAction extends ActionSupport {
 	}
 
 	protected void initSession(Utenti utenti){
+		initSession(utenti, null);
+	}
+
+	protected void initSession(Utenti utenti, String sid){
 		Map<String, Object> session = null;
 		MDIstituzioneDAO mdIstituzioneDAO = null;
 		MDIstituzione mdIstituzione = null;
@@ -163,6 +180,9 @@ public class LoginAction extends ActionSupport {
 		String idIstituzione = null;
 
 		session = ActionContext.getContext().getSession();
+		if (sid != null) {
+			session.put("sid", sid);
+		}
 		session.put("logined", "true");
 		session.put("username", username);
 		if (utenti.getDatiUtente().getIstituzione() != null){
@@ -416,5 +436,13 @@ public class LoginAction extends ActionSupport {
 	 */
 	public void setSuperAdmin(String superAdmin) {
 		this.superAdmin = superAdmin;
+	}
+
+	public String getSid() {
+		return sid;
+	}
+
+	public void setSid(String sid) {
+		this.sid = sid;
 	}
 }
