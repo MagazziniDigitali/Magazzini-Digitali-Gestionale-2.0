@@ -82,6 +82,8 @@ public class LoginAction extends ActionSupport {
 
 	protected String superAdmin = null;
 
+	protected String iperAdmin = null;
+
 	protected Integer altaRisoluzione = null;
 
 	protected Integer bagit = null;
@@ -319,6 +321,14 @@ public class LoginAction extends ActionSupport {
 	public Boolean showMenuSuperAdmin(){
 		Boolean result = false;
 		if (superAdmin != null && superAdmin.trim().equals("1")){
+			result = true;
+		}
+		return result;
+	}
+
+	public Boolean showMenuIperAdmin(){
+		Boolean result = false;
+		if (iperAdmin != null && iperAdmin.trim().equals("1")){
 			result = true;
 		}
 		return result;

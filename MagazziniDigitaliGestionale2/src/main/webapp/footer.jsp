@@ -8,6 +8,8 @@
     String version = (String) mavenProperties.get("version");
 
 %>
+<!-- 
 <div align="center">&copy; Magazzini digitali 2016
 <br>
 Ver. <%= version %> - Server <%=request.getServerName() %></div>
+ -->
