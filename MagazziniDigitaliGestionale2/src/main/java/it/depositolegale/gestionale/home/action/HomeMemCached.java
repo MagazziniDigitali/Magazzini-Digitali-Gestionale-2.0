@@ -91,9 +91,9 @@ public class HomeMemCached extends LoginAction {
 //						istituto = readValue(st[1]);
 //						break;
 //
-//					case "role":
-//						ruolo = readValue(st[1]);
-//						break;
+					case "role":
+						iperAdmin = readValue(st[1]);
+						break;
 
 					default:
 						break;
