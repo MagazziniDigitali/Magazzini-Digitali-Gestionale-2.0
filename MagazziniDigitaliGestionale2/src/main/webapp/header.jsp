@@ -92,8 +92,11 @@
               <li><a href="ChangePassword.action">Cambio Password</a></li>
             </ul>
           </li>
+ -->
+ <!-- Arge 15/06.2021 Logout temporaneo
           <li><a href="Home.action?logout=true">Logout</a></li>
  -->
+
         </s:if>
       </ul>
     </div>

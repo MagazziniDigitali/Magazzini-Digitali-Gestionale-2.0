@@ -1,2 +1,5 @@
 /.apt_generated_tests/
 pom_save.xml
+/target/
+/.classpath
+/.project

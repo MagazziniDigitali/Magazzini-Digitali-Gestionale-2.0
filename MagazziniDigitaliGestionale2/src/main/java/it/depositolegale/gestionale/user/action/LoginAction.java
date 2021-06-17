@@ -187,7 +187,9 @@ public class LoginAction extends ActionSupport {
 		}
 		session.put("logined", "true");
 		session.put("username", username);
-		if (utenti.getDatiUtente().getIstituzione() != null){
+//		if (utenti.getDatiUtente().getIstituzione() != null){
+		String id_istituzione = utenti.getDatiUtente().getIstituzione().getId(); // Arge 15/06/2021
+		if (utenti.getDatiUtente().getIstituzione() != null && !id_istituzione.equals("ISTITUZIONE-BASE")){
 			idIstituzione = utenti.getDatiUtente().getIstituzione().getId();
 			try {
 				mdIstituzioneDAO = new MDIstituzioneDAO();

@@ -1,6 +1,6 @@
 /* Struttura menu */
 nav { 
-	background: #2ba0db; 
+	background: #E0E0E0; /*	background: #2ba0db;*/
 	clear: left;
 }
 
@@ -76,7 +76,7 @@ nav {
 {
   line-height:1;
   padding:1em;
-  background-color:#2ba0db; /* Colore di sfondo iniziale */
+  background-color: #B5B3B3; /* background-color:#2ba0db;  Colore di sfondo iniziale */
   color:#fff; /* Colore del testo dei link */
   //font-weight: bold;
   text-decoration: none;
@@ -87,7 +87,7 @@ nav {
 .site-nav .flyout-alt:hover > a,
 .site-nav a:hover 
 {
-  background-color: #ba0202; /* Colore di sfondo sull'hover */
+  background-color: #8c8888; /* background-color: #ba0202;  Colore di sfondo sull'hover */
 }
  
 .site-nav .flyout-alt > a:after 

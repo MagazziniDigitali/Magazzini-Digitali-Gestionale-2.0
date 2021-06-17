@@ -3,6 +3,8 @@
  */
 package it.depositolegale.gestionale.home.action;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -165,6 +167,11 @@ public class HomeAction extends HomeMemCached {
 		try {
 			odb = new OggettoDigitaleBusiness();
 			if (idIstituto != null){
+				
+//Path currentRelativePath = Paths.get("");
+//String s = currentRelativePath.toAbsolutePath().toString();
+//System.out.println("Current absolute path is: " + s);
+				
 				mdIstituzioneDAO = new MDIstituzioneDAO();
 				mdIstituzione = mdIstituzioneDAO.findById(idIstituto);
 			}
