@@ -5,10 +5,11 @@
 	<parent>
 		<groupId>it.depositolegale.gestionale</groupId>
 		<artifactId>MagazziniDigitaliGestionale_2.0</artifactId>
-		<version>3.0.0</version>
+		<version>3.0.1</version><!-- 3.0.0 -->
 	</parent>
 	<groupId>it.depositolegale.gestionale.verifica.preRegistrazione</groupId>
 	<artifactId>MagazziniDigitaliVerificaPreRegistrazione</artifactId>
+	<version>3.0.4</version><!-- 3.0.3 -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -38,15 +39,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>
-  			it.bncf.magazziniDigitali.businessLogic.database
-  		</groupId>
-			<artifactId>
-  			MagazziniDigitaliBusinessLogicDatabase
-  		</artifactId>
-			<version>3.0.4</version>
+			<groupId>it.bncf.magazziniDigitali.businessLogic.database</groupId>
+			<artifactId>MagazziniDigitaliBusinessLogicDatabase</artifactId>
+			<version>3.0.5</version><!-- 3.0.4 -->
 		</dependency>
 	</dependencies>
+<!-- 	
 	<distributionManagement>
 		<repository>
 			<id>mvn-bncf</id>
@@ -54,5 +52,5 @@
 			<url>http://maven.bncf.firenze.sbn.it/artifactory/libs-release-local</url>
 		</repository>
 	</distributionManagement>
-	<version>3.0.3</version>
+ -->	
 </project>

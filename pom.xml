@@ -2,13 +2,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>it.depositolegale.gestionale</groupId>
   <artifactId>MagazziniDigitaliGestionale_2.0</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.1</version> <!-- 3.0.0 16/12/21 -->
   <packaging>pom</packaging>
   <description>Interfaccia Gestionale versione 2.0</description>
   <modules>
   	<module>MagazziniDigitaliGestionale2</module>
   	<module>MagazziniDigitaliVerificaPreRegistrazione</module>
   </modules>
+<!-- 17/12/2021 Argentino
 	<repositories>
 		<repository>
 			<id>bncf</id>
@@ -32,4 +33,5 @@
 			<url>http://maven.bncf.firenze.sbn.it/artifactory/libs-release-local</url>
 		</repository>
 	</distributionManagement>
-</project>
+ -->
+ </project>
